@@ -250,7 +250,7 @@ namespace ReadyToWin.API.Controllers
         public async Task<HttpResponseMessage> ListOfUserWinningByUserId(long userId)
         {
             Admin adminlist = new Admin() { UserId = userId };
-            var output = _iAdminRepository.UpdateWinningUser(adminlist);
+            var output = _iAdminRepository.ListOfUserWinningByUserId(adminlist);
             return await CreateResponse(output);
         }
 
