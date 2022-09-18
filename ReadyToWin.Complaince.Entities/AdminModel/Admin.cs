@@ -34,7 +34,7 @@ namespace ReadyToWin.Complaince.Entities.AdminModel
         public string NumberType { get; set; }
         [Required]
         [Display(Name = "WinningAmount")]
-        public double WinningAmount { get; set; }
+        public decimal WinningAmount { get; set; }
         public string Remarks { get; set; }
         public Boolean isActive { get; set; }
         public Boolean isDeleted { get; set; }

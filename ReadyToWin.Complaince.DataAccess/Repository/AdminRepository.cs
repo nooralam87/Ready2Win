@@ -83,10 +83,10 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             userList.GameSubCategoryId = GetLongIntegerFromDataReader(reader, "GameSubCategoryId");
             userList.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
             userList.NumberType = GetStringFromDataReader(reader, "NumberType");
-            userList.WinningAmount = GetDoubleFromDataReader(reader, "WinningAmount");
+            userList.WinningAmount = GetDecimalFromDataReader(reader, "WinningAmount");
             userList.Remarks = GetStringFromDataReader(reader, "Remarks");
-            userList.ApprovedAmount = GetDoubleFromDataReader(reader, "ApprovedAmount");            
-            userList.AdminUserId = GetLongIntegerFromDataReader(reader, "AdminUserId");
+            //userList.ApprovedAmount = GetDoubleFromDataReader(reader, "ApprovedAmount");            
+            //userList.AdminUserId = GetLongIntegerFromDataReader(reader, "AdminUserId");
             userList.IsActive = GetBooleanFromDataReader(reader, "IsActive");
             userList.IsDeleted = GetBooleanFromDataReader(reader, "IsDeleted");
             userList.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
