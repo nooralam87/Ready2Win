@@ -354,8 +354,8 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 _dbContextDQCPRDDB.AddInParameter(command, "GameTypeName", DbType.String, userGameSelection.GameTypeName);
                 _dbContextDQCPRDDB.AddInParameter(command, "GameCategoryId", DbType.Int64, userGameSelection.GameCategoryId);
                 _dbContextDQCPRDDB.AddInParameter(command, "CategoryName", DbType.String, userGameSelection.CategoryName);
-                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryId", DbType.Int64, userGameSelection.GameCategoryId);
-                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryName", DbType.String, userGameSelection.CategoryName);
+                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryId", DbType.Int64, userGameSelection.GameSubCategoryId);
+                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryName", DbType.String, userGameSelection.GameSubCategoryName);
                 _dbContextDQCPRDDB.AddInParameter(command, "NumberType", DbType.String, userGameSelection.NumberType);
                 _dbContextDQCPRDDB.AddInParameter(command, "Amount", DbType.Decimal, userGameSelection.Amount);
                 _dbContextDQCPRDDB.AddInParameter(command, "BetNumbers", DbType.String, userGameSelection.BetNumbers);
