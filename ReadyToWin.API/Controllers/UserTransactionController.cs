@@ -169,5 +169,27 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(count.ToString());
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetUserGameListbyUserId")]
+        [ResponseType(typeof(Response<UserGameSelection>))]
+        public async Task<HttpResponseMessage> GetUserGameListbyUserId(long UserId)
+        {
+            //UserAmountWithdraw userAmountwithdraw = new UserAmountWithdraw() { UserId = UserId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetUserGameListbyUserId(UserId));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetUserGameListbyGameSelectionId")]
+        [ResponseType(typeof(Response<UserGameSelection>))]
+        public async Task<HttpResponseMessage> GetUserGameListbyGameSelectionId(long GameSelectionId)
+        {
+            //UserAmountWithdraw userAmountwithdraw = new UserAmountWithdraw() { UserId = UserId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetUserGameListbyGameSelectionId(GameSelectionId));
+        }
+
     }
 }
