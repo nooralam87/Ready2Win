@@ -376,6 +376,64 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return TotalAmount;
         }
-
+        public List<UserGameSelection> GetUserGameListbyUserId(long UserId)
+        {
+            List<UserGameSelection> userGameSelectionsList = new List<UserGameSelection>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_USER_GAME_PLAYED_LIST);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "UserId", DbType.Int64, UserId);               
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userGameSelectionsList.Add(GenerateFromDataReaderGamePlayed(reader));
+                }
+            }
+            return userGameSelectionsList;
+        }
+        public List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId)
+        {
+            List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_USER_GAME_PLAYED_LIST_DETAILS);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameSelectionId", DbType.Int64, GameSelectionId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userGameSelectionsList.Add(GenerateFromDataReaderGamePlayedList(reader));
+                }
+            }
+            return userGameSelectionsList;
+        }
+        private UserGameSelection GenerateFromDataReaderGamePlayed(IDataReader reader)
+        {
+            UserGameSelection userGamePlayed = new UserGameSelection();            
+            userGamePlayed.GameSelectionId = GetLongIntegerFromDataReader(reader, "GameSelectionId");
+            userGamePlayed.UserName = GetStringFromDataReader(reader, "UserName");
+            userGamePlayed.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
+            userGamePlayed.CategoryName = GetStringFromDataReader(reader, "CategoryName");            
+            userGamePlayed.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");            
+            userGamePlayed.Amount = GetDecimalFromDataReader(reader, "Amount");            
+            //userGamePlayed.IsActive = GetBooleanFromDataReader(reader, "IsActive");
+            //userGamePlayed.IsDeleted = GetBooleanFromDataReader(reader, "IsDeleted");
+            userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
+            //userGamePlayed.CreatedBy = GetStringFromDataReader(reader, "CreatedBy");
+            //userGamePlayed.UpdatedDate = GetDateFromDataReader(reader, "UpdatedDate");
+            //userGamePlayed.UpdatedBy = GetStringFromDataReader(reader, "UpdatedBy");
+            return userGamePlayed;
+        }
+        private UserBettingDetails GenerateFromDataReaderGamePlayedList(IDataReader reader)
+        {
+            UserBettingDetails userGamePlayed = new UserBettingDetails();
+            //userGamePlayed.GameSelectionId = GetLongIntegerFromDataReader(reader, "GameSelectionId");
+            userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");
+            userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
+            //userGamePlayed.IsActive = GetBooleanFromDataReader(reader, "IsActive");
+            //userGamePlayed.IsDeleted = GetBooleanFromDataReader(reader, "IsDeleted");
+            //userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
+            //userGamePlayed.CreatedBy = GetStringFromDataReader(reader, "CreatedBy");
+            //userGamePlayed.UpdatedDate = GetDateFromDataReader(reader, "UpdatedDate");
+            //userGamePlayed.UpdatedBy = GetStringFromDataReader(reader, "UpdatedBy");
+            return userGamePlayed;
+        }
     }
 }

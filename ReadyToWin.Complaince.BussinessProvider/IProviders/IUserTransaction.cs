@@ -27,7 +27,8 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
         DbOutput UpdateWithdrawRequest(UserAmountWithdraw userAmountwithdraw);
         //DbOutput DeleteWithdrawRequest(UserAmountWithdraw userAmountwithdraw);
         int UserGameSelectionSubmit(UserGameSelection userGameSelection);
-
         decimal GetUserTotalAmount(long id);
+        List<UserGameSelection> GetUserGameListbyUserId(long UserId);
+        List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId);
     }
 }
