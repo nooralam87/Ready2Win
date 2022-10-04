@@ -44,6 +44,7 @@ namespace ReadyToWin.Complaince.Entities.AdminModel
         public string UpdatedBy { get; set; }
         public double ApprovedAmount { get; set; }
         public long AdminUserId { get; set; }
-       
+        public int winningNumber { get; set; }
+
     }
 }

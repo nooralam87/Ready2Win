@@ -5,6 +5,7 @@ using ReadyToWin.Complaince.Entities.AdminModel;
 using ReadyToWin.Complaince.Framework;
 using System.Collections.Generic;
 using System.Data;
+using ReadyToWin.Complaince.Entities.GameType;
 
 
 namespace ReadyToWin.Complaince.BussinessProvider.IProviders
@@ -20,5 +21,6 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
         DbOutput UserDepositAmountApproved(Admin approvedAmount);
 
         DbOutput UserWithdrawAmountApproved(Admin approvedAmount);
+        DbOutput DeclaredWinningNumber(Admin adminModel);
     }
 }

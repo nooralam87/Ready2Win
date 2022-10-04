@@ -49,6 +49,7 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string USER_WINNER_AMOUNT = "usp_user_winning_amount";
         public const string USER_DEPOSIT_AMOUNT_APPROVED = "usp_user_deposit_amount_approvedby_admin";
         public const string USER_WITHDRAW_AMOUNT_APPROVED = "usp_user_withdraw_amount_approvedby_admin";
+        public const string WIN_NUMBER_DECLARED = "usp_user_win_declare";
 
         public const string GET_USER_TOTAL_AMOUNT = "usp_user_Total_Amount";
 
