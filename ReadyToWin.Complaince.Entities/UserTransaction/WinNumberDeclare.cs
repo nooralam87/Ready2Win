@@ -9,18 +9,12 @@ using ReadyToWin.Complaince.Entities.BaseModel;
 
 namespace ReadyToWin.Complaince.Entities.UserTransaction
 {
-    public class UserBettingDetails : Base
+    public class WinNumberDeclare : Base
     {
-        public long GameBettingId { get; set; } 
-        public long GameSelectionId { get; set; }
-        public long UserId { get; set; }
-        public string UserName { get; set; }               
-        public int BetNumber { get; set; }
-        public decimal BetAmount { get; set; }
-        public string CategoryName { get; set; }
-
+        public long GameTypeId { get; set; }
+        public string GameTypeName { get; set; }                     
+        public int WinningNumber { get; set; }
         public DateTime CreatedDate { get; set; }
-
-
+        
     }
 }
