@@ -16,6 +16,7 @@ using System.Data;
 using System;
 using System.Security.Claims;
 using ReadyToWin.API.Models;
+using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.API.Controllers
 {
@@ -167,6 +168,38 @@ namespace ReadyToWin.API.Controllers
         {
             decimal count = _iUserTransaction.GetUserTotalAmount(Id);
             return await CreateResponse(count.ToString());
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetUserGameListbyUserIdandGameTypeId")]
+        [ResponseType(typeof(Response<UserBettingDetails>))]
+        public async Task<HttpResponseMessage> GetUserGameListbyUserIdandGameTypeId(long UserId, long GameTypeId)
+        {
+            //UserAmountWithdraw userAmountwithdraw = new UserAmountWithdraw() { UserId = UserId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetUserGameListbyUserIdandGameTypeId(UserId, GameTypeId));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetUserGameListbyGameSelectionId")]
+        [ResponseType(typeof(Response<UserGameSelection>))]
+        public async Task<HttpResponseMessage> GetUserGameListbyGameSelectionId(long GameSelectionId)
+        {
+            //UserAmountWithdraw userAmountwithdraw = new UserAmountWithdraw() { UserId = UserId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetUserGameListbyGameSelectionId(GameSelectionId));
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetWinningDeclareNumberHistory")]
+        [ResponseType(typeof(Response<WinNumberDeclare>))]
+        public async Task<HttpResponseMessage> GetWinningDeclareNumberHistory(long GameTypeId)
+        {
+            //UserAmountWithdraw userAmountwithdraw = new UserAmountWithdraw() { UserId = UserId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetWinningDeclareNumberHistory(GameTypeId));
         }
 
     }

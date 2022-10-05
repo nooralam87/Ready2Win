@@ -13,6 +13,7 @@ using ReadyToWin.Complaince.Entities.Dashboard;
 using ReadyToWin.Complaince.Entities.ResponseModel;
 using ReadyToWin.Complaince.BussinessProvider.IProviders;
 using ReadyToWin.Complaince.Entities.UserModel;
+using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.Complaince.DataAccess.Repository
 {
@@ -354,8 +355,8 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 _dbContextDQCPRDDB.AddInParameter(command, "GameTypeName", DbType.String, userGameSelection.GameTypeName);
                 _dbContextDQCPRDDB.AddInParameter(command, "GameCategoryId", DbType.Int64, userGameSelection.GameCategoryId);
                 _dbContextDQCPRDDB.AddInParameter(command, "CategoryName", DbType.String, userGameSelection.CategoryName);
-                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryId", DbType.Int64, userGameSelection.GameCategoryId);
-                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryName", DbType.String, userGameSelection.CategoryName);
+                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryId", DbType.Int64, userGameSelection.GameSubCategoryId);
+                _dbContextDQCPRDDB.AddInParameter(command, "GameSubCategoryName", DbType.String, userGameSelection.GameSubCategoryName);
                 _dbContextDQCPRDDB.AddInParameter(command, "NumberType", DbType.String, userGameSelection.NumberType);
                 _dbContextDQCPRDDB.AddInParameter(command, "Amount", DbType.Decimal, userGameSelection.Amount);
                 _dbContextDQCPRDDB.AddInParameter(command, "BetNumbers", DbType.String, userGameSelection.BetNumbers);
@@ -376,6 +377,82 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return TotalAmount;
         }
-
+        public List<UserBettingDetails> GetUserGameListbyUserIdandGameTypeId(long UserId, long GameTypeId)
+        {
+            List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_USER_GAME_BIDDING_LIST);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "UserId", DbType.Int64, UserId);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, GameTypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userGameSelectionsList.Add(GenerateFromDataReaderGamePlayed(reader));
+                }
+            }
+            return userGameSelectionsList;
+        }
+        public List<WinNumberDeclare> GetWinningDeclareNumberHistory(long GameTypeId)
+        {
+            List<WinNumberDeclare> winNumberDeclare = new List<WinNumberDeclare>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.WIN_NUMBER_DECLARED_HISTORY);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, GameTypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    winNumberDeclare.Add(GenerateFromDataReaderWinNumberDeclare(reader));
+                }
+            }
+            return winNumberDeclare;
+        }
+        public List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId)
+        {
+            List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_USER_GAME_PLAYED_LIST_DETAILS);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameSelectionId", DbType.Int64, GameSelectionId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userGameSelectionsList.Add(GenerateFromDataReaderGamePlayedList(reader));
+                }
+            }
+            return userGameSelectionsList;
+        }
+        private UserBettingDetails GenerateFromDataReaderGamePlayed(IDataReader reader)
+        {
+            UserBettingDetails userGamePlayed = new UserBettingDetails();  
+            userGamePlayed.CategoryName = GetStringFromDataReader(reader, "CategoryName");            
+            userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");            
+            userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");            
+            
+            userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
+          
+            return userGamePlayed;
+        }
+        private WinNumberDeclare GenerateFromDataReaderWinNumberDeclare(IDataReader reader)
+        {
+            WinNumberDeclare winNumber = new WinNumberDeclare();
+            winNumber.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
+            winNumber.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
+            winNumber.WinningNumber = GetIntegerFromDataReader(reader, "WinningNumber");
+            winNumber.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");           
+            return winNumber;
+        }
+        private UserBettingDetails GenerateFromDataReaderGamePlayedList(IDataReader reader)
+        {
+            UserBettingDetails userGamePlayed = new UserBettingDetails();
+            //userGamePlayed.GameSelectionId = GetLongIntegerFromDataReader(reader, "GameSelectionId");
+            userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");
+            userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
+            //userGamePlayed.IsActive = GetBooleanFromDataReader(reader, "IsActive");
+            //userGamePlayed.IsDeleted = GetBooleanFromDataReader(reader, "IsDeleted");
+            //userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
+            //userGamePlayed.CreatedBy = GetStringFromDataReader(reader, "CreatedBy");
+            //userGamePlayed.UpdatedDate = GetDateFromDataReader(reader, "UpdatedDate");
+            //userGamePlayed.UpdatedBy = GetStringFromDataReader(reader, "UpdatedBy");
+            return userGamePlayed;
+        }
     }
 }

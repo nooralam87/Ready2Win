@@ -144,115 +144,126 @@ namespace ReadyToWin.API.Controllers
            var output = _iUserTransaction.UpdateWithdrawRequest(userAmountwithdraw);
            return await CreateResponse(output);
        }
-       ///// <summary>
-       ///// Update UserWithdraw Request.
-       ///// </summary>
-       ///// <param name="user"></param>
-       ///// <returns></returns>
-       ////[CustomAuthorize(Roles = "Admin")]
-       //[AllowAnonymous]
-       //[HttpPost]
-       //[Route("DeleteWithdrawRequest")]
-       //[ResponseType(typeof(Response<Admin>))]
-       //public async Task<HttpResponseMessage> DeleteWithdrawRequest(UserAmountWithdraw userAmountwithdraw)
-       //{
-       //    var output = _iUserTransaction.DeleteWithdrawRequest(userAmountwithdraw);
-       //    return await CreateResponse(output);
-       //}
-
-       /// <summary>
-       /// Insert Winning Amount For User
-       /// </summary>
-       /// <param name="user"></param>
-       /// <returns></returns>
-       [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
-       [HttpPost]
-       [Route("InsertWinningAmountForUser")]
-       [ResponseType(typeof(Response<Admin>))]
-       public async Task<HttpResponseMessage> InsertWinningAmountForUser(Admin insertWinningAmount)
-       {
-           var output = _iAdminRepository.InsertWinningAmountForUser(insertWinningAmount);
-           return await CreateResponse(output);
-       }
-
-       /// <summary>
-       /// List of winner user
-       /// </summary>
-       /// <param name="user"></param>
-       /// <returns></returns>
-       [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
-       [HttpGet]
-       [Route("ListOfWinningUsers")]
-       [ResponseType(typeof(Response<Admin>))]
-       public async Task<HttpResponseMessage> ListOfWinningUsers()
-       {
-           var output = _iAdminRepository.ListOfWinningUsers();
-           return await CreateResponse(output);
-       }
-
-       /// <summary>
-       /// List of winner user by Id
-       /// </summary>
-       /// <param name="user"></param>
-       /// <returns></returns>
-       //[CustomAuthorize(Roles = "Admin")]
-       //[AllowAnonymous]
-       //[HttpGet]
-       //[Route("ListOfWinningUsersById")]
-       //[ResponseType(typeof(Response<Admin>))]
-       //public async Task<HttpResponseMessage> ListOfWinningUsersById(long Id)
-       //{
-       //     Admin adminlist = new Admin() { Id = Id };
-       //     var output = _iAdminRepository.ListOfWinningUsersById(Id);
-       //    return await CreateResponse(output);
-       //}
-
-       /// <summary>
-       /// Update Winner User Details 
-       /// </summary>
-       /// <param name="user"></param>
-       /// <returns></returns>
-       [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
-       [HttpPost]
-       [Route("UpdateWinningUser")]
-       [ResponseType(typeof(Response<Admin>))]
-       public async Task<HttpResponseMessage> UpdateWinningUser(Admin updateWinningUser)
-       {
-           var output = _iAdminRepository.UpdateWinningUser(updateWinningUser);
-           return await CreateResponse(output);
-       }
-
         [CustomAuthorize(Roles = "Admin")]
         [AllowAnonymous]
-        [HttpGet]
-        [Route("ListOfWinningUsersById")]
+        [HttpPost]
+        [Route("DeclaredWinningNumber")]
         [ResponseType(typeof(Response<Admin>))]
-        public async Task<HttpResponseMessage> ListOfWinningUsersById(long Id)
+        public async Task<HttpResponseMessage> DeclaredWinningNumber(Admin adminModel)
         {
-            Admin adminlist = new Admin() { Id = Id };
-            var output = _iAdminRepository.ListOfWinningUsersById(adminlist);
+            var output = _iAdminRepository.DeclaredWinningNumber(adminModel);
             return await CreateResponse(output);
         }
+
+        ///// <summary>
+        ///// Update UserWithdraw Request.
+        ///// </summary>
+        ///// <param name="user"></param>
+        ///// <returns></returns>
+        ////[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("DeleteWithdrawRequest")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> DeleteWithdrawRequest(UserAmountWithdraw userAmountwithdraw)
+        //{
+        //    var output = _iUserTransaction.DeleteWithdrawRequest(userAmountwithdraw);
+        //    return await CreateResponse(output);
+        //}
+
+        ///// <summary>
+        ///// Insert Winning Amount For User
+        ///// </summary>
+        ///// <param name="user"></param>
+        ///// <returns></returns>
+        //[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("InsertWinningAmountForUser")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> InsertWinningAmountForUser(Admin insertWinningAmount)
+        //{
+        //    var output = _iAdminRepository.InsertWinningAmountForUser(insertWinningAmount);
+        //    return await CreateResponse(output);
+        //}
+
+        /// <summary>
+        /// List of winner user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        //[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpGet]
+        //[Route("ListOfWinningUsers")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> ListOfWinningUsers()
+        //{
+        //    var output = _iAdminRepository.ListOfWinningUsers();
+        //    return await CreateResponse(output);
+        //}
+
+        /// <summary>
+        /// List of winner user by Id
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        //[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpGet]
+        //[Route("ListOfWinningUsersById")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> ListOfWinningUsersById(long Id)
+        //{
+        //     Admin adminlist = new Admin() { Id = Id };
+        //     var output = _iAdminRepository.ListOfWinningUsersById(Id);
+        //    return await CreateResponse(output);
+        //}
 
         /// <summary>
         /// Update Winner User Details 
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("ListOfUserWinningByUserId")]
-        [ResponseType(typeof(Response<Admin>))]
-        public async Task<HttpResponseMessage> ListOfUserWinningByUserId(long userId)
-        {
-            Admin adminlist = new Admin() { UserId = userId };
-            var output = _iAdminRepository.ListOfUserWinningByUserId(adminlist);
-            return await CreateResponse(output);
-        }
+        //[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("UpdateWinningUser")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> UpdateWinningUser(Admin updateWinningUser)
+        //{
+        //    var output = _iAdminRepository.UpdateWinningUser(updateWinningUser);
+        //    return await CreateResponse(output);
+        //}
+
+        // [CustomAuthorize(Roles = "Admin")]
+        // [AllowAnonymous]
+        // [HttpGet]
+        // [Route("ListOfWinningUsersById")]
+        // [ResponseType(typeof(Response<Admin>))]
+        // public async Task<HttpResponseMessage> ListOfWinningUsersById(long Id)
+        // {
+        //     Admin adminlist = new Admin() { Id = Id };
+        //     var output = _iAdminRepository.ListOfWinningUsersById(adminlist);
+        //     return await CreateResponse(output);
+        // }
+
+        /// <summary>
+        /// Update Winner User Details 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        //[CustomAuthorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        //[HttpGet]
+        //[Route("ListOfUserWinningByUserId")]
+        //[ResponseType(typeof(Response<Admin>))]
+        //public async Task<HttpResponseMessage> ListOfUserWinningByUserId(long userId)
+        //{
+        //    Admin adminlist = new Admin() { UserId = userId };
+        //    var output = _iAdminRepository.ListOfUserWinningByUserId(adminlist);
+        //    return await CreateResponse(output);
+        //}
 
         /// <summary>
         /// Delete Winner User Details 

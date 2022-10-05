@@ -11,7 +11,9 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
 {
     public class UserGameSelection :Base
     {
+        public long GameSelectionId { get; set; }
         public long UserId { get; set; }
+        public string UserName { get; set; }
         public long GameTypeId { get; set; }       
         public string GameTypeName { get; set; }
         public long GameCategoryId { get; set; }
@@ -19,7 +21,7 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public long GameSubCategoryId { get; set; }
         public string GameSubCategoryName { get; set; }
         public string NumberType { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public string BetNumbers { get; set; }
         public string BetAmounts { get; set; }
         

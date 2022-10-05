@@ -13,6 +13,7 @@ using ReadyToWin.Complaince.Entities.Dashboard;
 using ReadyToWin.Complaince.Entities.ResponseModel;
 using ReadyToWin.Complaince.BussinessProvider.IProviders;
 using ReadyToWin.Complaince.Entities.UserTransaction;
+using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.Complaince.DataAccess.Repository
 {
@@ -218,6 +219,26 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                     Message = Convert.ToString(_dbContextDQCPRDDB.GetParameterValue(command, "Message"))
                 };
             }
+        }
+
+        public DbOutput DeclaredWinningNumber(Admin adminModel)
+        {
+            using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.WIN_NUMBER_DECLARED))
+            {
+                _dbContextDQCPRDDB.AddInParameter(command, "GameTypeId", DbType.Int64, adminModel.GameTypeId);
+                _dbContextDQCPRDDB.AddInParameter(command, "GametypeName", DbType.String, adminModel.GameTypeName);
+                _dbContextDQCPRDDB.AddInParameter(command, "winningNumber", DbType.Int32, adminModel.winningNumber);
+                _dbContextDQCPRDDB.AddInParameter(command, "AdminUserId", DbType.Int64, adminModel.AdminUserId);
+                _dbContextDQCPRDDB.AddOutParameter(command, "Code", DbType.String, 4000);
+                _dbContextDQCPRDDB.AddOutParameter(command, "Message", DbType.String, 4000);
+                _dbContextDQCPRDDB.ExecuteNonQuery(command);
+                return new DbOutput()
+                {
+                    Code = Convert.ToInt32(_dbContextDQCPRDDB.GetParameterValue(command, "Code")),
+                    Message = Convert.ToString(_dbContextDQCPRDDB.GetParameterValue(command, "Message"))
+                };
+            }
+
         }
     }
 }
