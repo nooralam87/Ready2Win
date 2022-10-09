@@ -1,0 +1,116 @@
+﻿
+@model IEnumerable<ReadyToWin.Complaince.Entities.UserTransaction.UserAmountWithdraw>
+
+@{
+    ViewBag.Title = "Withdraw Request";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <b>Withdraw Request</b></h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> View Report
+        </a>
+    </div>
+</div>
+<div class="container">
+    <h3> <B> RECENT Amount Deposited ACTIVITY </B></h3>
+    <div class="table-responsive">
+        <table id="exampletbl" class="table table-hover display">
+            <thead style="color:#4e73df;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RequestedAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MobileNoForPayment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApprovedAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PaymentModeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                </tr>
+            </thead>
+            <tbody style="color: #4e73df;;">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td title="@item.CreatedDate">
+                            @String.Format("{0:dd/MM/yyyy}", item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td title="@item.UpdatedDate">
+                            @String.Format("{0:dd/MM/yyyy}", item.UpdatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobileNoForPayment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApprovedAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentModeId)
+                            
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts {
+    <!-- Core plugin JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#exampletbl').DataTable();
+        });
+    </script>
+}

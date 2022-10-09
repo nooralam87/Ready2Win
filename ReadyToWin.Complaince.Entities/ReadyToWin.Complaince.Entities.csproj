@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="AdminModel\Admin.cs" />
     <Compile Include="BaseModel\Base.cs" />
+    <Compile Include="CartsModel\Root.cs" />
     <Compile Include="Constant\ConfigConstant.cs" />
     <Compile Include="Constant\Messages.cs" />
     <Compile Include="Constant\Status.cs" />

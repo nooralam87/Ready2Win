@@ -20,7 +20,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             DatabaseProviderFactory factory = new DatabaseProviderFactory();
             _dbContextDQCPRDDB = factory.Create(C_Connection_Big);
         }
-        public DbOutput RequestVendor(Vendor vendor)
+        public DbOutput RequestVendor(ref Vendor vendor)
         {
             using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_VENDOR_Qutation))
             {
@@ -35,11 +35,13 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
 
                 _dbContextDQCPRDDB.AddOutParameter(command, "Code", DbType.String, 4000);
                 _dbContextDQCPRDDB.AddOutParameter(command, "Message", DbType.String, 4000);
+                _dbContextDQCPRDDB.AddOutParameter(command, "VendorTransactionID", DbType.Int32, 4000);
                 _dbContextDQCPRDDB.ExecuteNonQuery(command);
+                vendor.Id = Convert.ToInt32(_dbContextDQCPRDDB.GetParameterValue(command, "VendorTransactionID"));
                 return new DbOutput()
                 {
                     Code = Convert.ToInt32(_dbContextDQCPRDDB.GetParameterValue(command, "Code")),
-                    Message = Convert.ToString(_dbContextDQCPRDDB.GetParameterValue(command, "Message"))
+                    Message =  Convert.ToString(_dbContextDQCPRDDB.GetParameterValue(command, "Message"))
                 };
             }
         }
@@ -57,6 +59,23 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 }
             }
             return vendorList;
+        }
+        public Customer GetCustomerTransaction(int id)
+        {
+            Customer _cust = new Customer();
+            using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.GET_Customer_Transaction))
+            {
+                _dbContextDQCPRDDB.AddInParameter(command, "ID", DbType.Int64, id);
+                using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        _cust.email = GetStringFromDataReader(reader, "CustomerEmailID");
+                        _cust.id = GetIntegerFromDataReader(reader, "CustomerID");
+                    }
+                }
+            }
+            return _cust;
         }
         private string GenerateVendor(IDataReader reader)
         {

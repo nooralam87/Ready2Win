@@ -175,7 +175,7 @@ namespace ReadyToWin.Complaince.Framework.Utility
             }
             return csp.CreateDecryptor();
         }
-        public string DecryptStringFromBytes(byte[] cipherText, byte[] key, byte[] iv)
+        private string DecryptStringFromBytes(byte[] cipherText, byte[] key, byte[] iv)
         {
             // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)

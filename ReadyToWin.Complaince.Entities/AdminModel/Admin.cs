@@ -36,12 +36,11 @@ namespace ReadyToWin.Complaince.Entities.AdminModel
         [Display(Name = "WinningAmount")]
         public decimal WinningAmount { get; set; }
         public string Remarks { get; set; }
+        [Required]
+        [Display(Name = "Status")]
+        public string Status { get; set; }
         public Boolean isActive { get; set; }
         public Boolean isDeleted { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
-        public string UpdatedBy { get; set; }
         public double ApprovedAmount { get; set; }
         public long AdminUserId { get; set; }
         public int winningNumber { get; set; }
