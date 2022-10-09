@@ -19,8 +19,6 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public decimal BetAmount { get; set; }
         public string CategoryName { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
 
     }
 }

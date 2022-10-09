@@ -25,10 +25,6 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public long GameTypeId { get; set; }
         public long GameSubTypeId { get; set; }
         public string Remarks { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
-        public string UpdatedBy { get; set; }
         public Boolean isActive { get; set; }
         public Boolean isDeleted { get; set; }
     }
