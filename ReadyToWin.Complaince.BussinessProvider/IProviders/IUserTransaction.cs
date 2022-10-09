@@ -31,5 +31,6 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
         List<UserBettingDetails> GetUserGameListbyUserIdandGameTypeId(long UserId, long GameTypeId);
         List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId);
         List<WinNumberDeclare> GetWinningDeclareNumberHistory(long GameTypeId);
+        List<UserWinDetails> GetUserWinDetails(UserWinDetails userWinDetailsList);
     }
 }

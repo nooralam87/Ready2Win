@@ -202,5 +202,16 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(_iUserTransaction.GetWinningDeclareNumberHistory(GameTypeId));
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetUserWinDetails")]
+        [ResponseType(typeof(Response<UserWinDetails>))]
+        public async Task<HttpResponseMessage> GetUserWinDetails(long UserId, long GameTypeId)
+        {
+            UserWinDetails userAmountwithdraw = new UserWinDetails() { UserId = UserId, GameTypeId= GameTypeId };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iUserTransaction.GetUserWinDetails(userAmountwithdraw));
+        }
+
     }
 }
