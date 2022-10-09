@@ -45,6 +45,7 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string INSERT_USER_GAME_SELECTION_SUBMIT = "usp_user_game_selection_submit";
         public const string INSERT_USER_GAME_BIDDING_LIST = "usp_user_game_bidding_list";
         public const string INSERT_USER_GAME_PLAYED_LIST_DETAILS = "usp_user_game_played_details";
+        public const string USER_WIN_LIST = "usp_user_win_list";
 
         //Admin declare Winner User      
         public const string USER_WINNER_AMOUNT = "usp_user_winning_amount";
