@@ -22,5 +22,6 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
 
         DbOutput UserWithdrawAmountApproved(Admin approvedAmount);
         DbOutput DeclaredWinningNumber(Admin adminModel);
+        List<AmountOnGameByGameType> ListOfAmountOnGameByGameType(long GameTypeId);
     }
 }

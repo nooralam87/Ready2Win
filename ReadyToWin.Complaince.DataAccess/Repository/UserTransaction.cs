@@ -406,6 +406,21 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return winNumberDeclare;
         }
+
+        public List<WinNumberDeclare> GetLatestWinNumberDeclare()
+        {
+            List<WinNumberDeclare> winNumberDeclare = new List<WinNumberDeclare>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.LATEST_WIN_NUMBER_DECLARE);
+            //_dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, GameTypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    winNumberDeclare.Add(GenerateFromDataReaderWinNumberDeclare(reader));
+                }
+            }
+            return winNumberDeclare;
+        }
         public List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId)
         {
             List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();
@@ -425,10 +440,8 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             UserBettingDetails userGamePlayed = new UserBettingDetails();  
             userGamePlayed.CategoryName = GetStringFromDataReader(reader, "CategoryName");            
             userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");            
-            userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");            
-            
-            userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
-          
+            userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
+            userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");          
             return userGamePlayed;
         }
         private WinNumberDeclare GenerateFromDataReaderWinNumberDeclare(IDataReader reader)

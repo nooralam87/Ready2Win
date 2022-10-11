@@ -155,6 +155,22 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(output);
         }
 
+        /// <summary>
+        /// List of User withdraw request 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [CustomAuthorize(Roles = "Admin")]
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ListOfAmountOnGameByGameType")]
+        [ResponseType(typeof(Response<AmountOnGameByGameType>))]
+        public async Task<HttpResponseMessage> ListOfAmountOnGameByGameType(long GameTypeId)
+        {            
+            var output = _iAdminRepository.ListOfAmountOnGameByGameType(GameTypeId);
+            return await CreateResponse(output);
+        }
+
         ///// <summary>
         ///// Update UserWithdraw Request.
         ///// </summary>

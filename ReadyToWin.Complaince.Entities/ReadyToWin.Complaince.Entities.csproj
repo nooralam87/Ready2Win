@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModel\AmountOnGameByGameType.cs" />
     <Compile Include="AdminModel\Admin.cs" />
     <Compile Include="BaseModel\Base.cs" />
     <Compile Include="Constant\ConfigConstant.cs" />
