@@ -69,7 +69,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             gameType.StartDate = GetDateFromDataReader(reader, "StartDate");
             gameType.EndDate = GetDateFromDataReader(reader, "EndDate");
             gameType.IsActive = GetBooleanFromDataReader(reader, "isActive");
-            //gameType.IsDeleted = GetBooleanFromDataReader(reader, "is_deleted");
+            gameType.Duration = GetIntegerFromDataReader(reader, "Duration");
             gameType.CreatedBy = GetStringFromDataReader(reader, "CreatedBy");
             gameType.UpdatedBy = GetStringFromDataReader(reader, "UpdatedBy");
             gameType.UpdatedDate = GetDateFromDataReader(reader, "UpdatedDate");

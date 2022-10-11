@@ -68,6 +68,21 @@ namespace ReadyToWin.API.Controllers
             // do here some operation  
             return Json(output, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ApproveRejectWithdraw(long _id, long _usrId, string type)
+        {
+            Admin userAmountApproved = new Admin()
+            {
+                AdminUserId = User.UserId,
+                UserId = _usrId,
+                Id = _id,
+                Status = type.ToUpper() == "A" ? "Approved" : "Rejected",
+                Remarks = "Approved By The " + User.roles
+            };
+
+            var output = _iAdminRepository.UserWithdrawAmountApproved(userAmountApproved);
+            // do here some operation  
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
     }
    
 }

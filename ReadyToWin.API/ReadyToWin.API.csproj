@@ -20,7 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -236,6 +237,7 @@
     <Compile Include="Controllers\UserTransactionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\WinningController.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Filters\ReadyAuthorizeAttribute.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Providers\MyAuthenticationFilter.cs" />
     <Compile Include="Providers\MyBasicAuthenticationFilter.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\GameWinning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -2150,6 +2153,9 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
     <Content Include="Views\Home\Preview.cshtml" />
+    <Content Include="Views\Winning\Create.cshtml" />
+    <Content Include="Views\Winning\Details.cshtml" />
+    <Content Include="Views\Winning\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmailServer\EmailServer.csproj">

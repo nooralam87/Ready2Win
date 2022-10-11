@@ -391,6 +391,20 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return userGameSelectionsList;
         }
+        public List<UserBettingDetails> GetUserGameListbyGameTypeId(long GameTypeId)
+        {
+            List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.INSERT_USER_GAME_BIDDING_LIST_BY_GAME);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, GameTypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userGameSelectionsList.Add(GenerateFromDataReaderGamePlayed(reader));
+                }
+            }
+            return userGameSelectionsList;
+        }
         public List<WinNumberDeclare> GetWinningDeclareNumberHistory(long GameTypeId)
         {
             List<WinNumberDeclare> winNumberDeclare = new List<WinNumberDeclare>();
@@ -457,7 +471,12 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
         private UserBettingDetails GenerateFromDataReaderGamePlayedList(IDataReader reader)
         {
             UserBettingDetails userGamePlayed = new UserBettingDetails();
-            //userGamePlayed.GameSelectionId = GetLongIntegerFromDataReader(reader, "GameSelectionId");
+            userGamePlayed.GameBettingId = GetLongIntegerFromDataReader(reader, "GameBettingId");
+            userGamePlayed.GameSelectionId = GetLongIntegerFromDataReader(reader, "GameSelectionId");
+            userGamePlayed.UserId = GetLongIntegerFromDataReader(reader, "UserID");
+            userGamePlayed.CategoryName = GetStringFromDataReader(reader, "CategoryName");
+            userGamePlayed.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
+            userGamePlayed.UserName = GetStringFromDataReader(reader, "user_id");
             userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");
             userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
             //userGamePlayed.IsActive = GetBooleanFromDataReader(reader, "IsActive");

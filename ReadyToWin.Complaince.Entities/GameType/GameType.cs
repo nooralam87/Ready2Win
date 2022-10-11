@@ -24,6 +24,9 @@ namespace ReadyToWin.Complaince.Entities.GameType
         [Required]
         [Display(Name = "EndDate")]
         public DateTime EndDate { get; set; }
+        [Required]
+        [Display(Name = "Duration")]
+        public int Duration { get; set; }
 
     }
 }
