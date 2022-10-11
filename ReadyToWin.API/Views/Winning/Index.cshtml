@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ReadyToWin.Complaince.Entities.AdminModel.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <b>Winning Users</b></h1>
+        <a href="/Winning/Create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Create New
+        </a>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">RECENT Winner Users</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="exampletbl" class="table table-bordered"  width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GameTypeId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GameTypeName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NumberType)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WinningAmount)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Remarks)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.winningNumber)
+                            </th>
+                            @*<th></th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GameTypeId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GameTypeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WinningAmount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remarks)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.winningNumber)
+                                </td>
+                                @*<td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#exampletbl').DataTable();
+        });
+    </script>
+}
+

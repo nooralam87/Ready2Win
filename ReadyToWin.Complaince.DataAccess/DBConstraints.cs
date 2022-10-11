@@ -44,6 +44,7 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string USER_AMOUNT_WITHDRAW = "usp_user_withdraw_amount";
         public const string INSERT_USER_GAME_SELECTION_SUBMIT = "usp_user_game_selection_submit";
         public const string INSERT_USER_GAME_BIDDING_LIST = "usp_user_game_bidding_list";
+        public const string INSERT_USER_GAME_BIDDING_LIST_BY_GAME = "usp_user_game_bidding_list_by_game"; 
         public const string INSERT_USER_GAME_PLAYED_LIST_DETAILS = "usp_user_game_played_details";
         public const string USER_WIN_LIST = "usp_user_win_list";
 

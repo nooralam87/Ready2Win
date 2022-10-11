@@ -18,6 +18,7 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public int BetNumber { get; set; }
         public decimal BetAmount { get; set; }
         public string CategoryName { get; set; }
+        public string GameSubCategoryName { get; set; }
 
 
     }

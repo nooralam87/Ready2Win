@@ -24,7 +24,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Home/index">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -36,7 +36,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/Home/index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -62,14 +62,29 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider" />
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWithdraw"
+                   aria-expanded="true" aria-controls="collapseWithdraw">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Announe Winning No</span>
+                </a>
+                <div id="collapseWithdraw" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Announe Winning No:</h6>
+                        <a class="collapse-item" href="/Winning/Index">View Win Users</a>
+                        <a class="collapse-item" href="/Winning/Create">Create</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider" />
             <!-- Heading -->
             <!-- <div class="sidebar-heading">
                 Addons
             </div> -->
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Home/WithdrawRequest" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="/Home/WithdrawRequest" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-chart-pie"></i>
                     <span>Withdraw Request</span>
@@ -78,7 +93,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="Home/AmountDeposit">
+                <a class="nav-link" href="/Home/AmountDeposit">
                     <i class="fas fa-border-all	"></i>
                     <span>Add Money Request</span>
                 </a>
@@ -93,7 +108,7 @@
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="Home/Index">
+                <a class="nav-link" href="/Home/Index">
                     <i class="fas fa-user-alt	"></i>
                     <span>User</span>
                 </a>
@@ -234,7 +249,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="~/img/undraw_profile_1.svg"
                                              alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -248,7 +263,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="~/img/undraw_profile_2.svg"
                                              alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -262,7 +277,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="~/img/undraw_profile_3.svg"
                                              alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -374,12 +389,11 @@
     </div>
     <!-- Bootstrap core JavaScript-->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/vendor/jquery")
     <!-- Core plugin JavaScript-->
-    @Scripts.Render("~/Content/vendor/jquery-easing/jquery.easing.min.js")
+    @Scripts.Render("~/bundles/Coreplugin")
     <!-- Custom scripts for all pages-->
-    @Scripts.Render("~/Scripts/sb-admin-2.min.js")
+    @Scripts.Render("~/bundles/Customscripts")
     @RenderSection("scripts", required: false)
 </body>
 

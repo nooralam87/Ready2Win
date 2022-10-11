@@ -29,6 +29,7 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
         int UserGameSelectionSubmit(UserGameSelection userGameSelection);
         decimal GetUserTotalAmount(long id);
         List<UserBettingDetails> GetUserGameListbyUserIdandGameTypeId(long UserId, long GameTypeId);
+        List<UserBettingDetails> GetUserGameListbyGameTypeId(long GameTypeId);
         List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId);
         List<WinNumberDeclare> GetWinningDeclareNumberHistory(long GameTypeId);
         List<UserWinDetails> GetUserWinDetails(UserWinDetails userWinDetailsList);

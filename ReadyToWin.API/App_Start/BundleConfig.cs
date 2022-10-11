@@ -8,6 +8,17 @@ namespace ReadyToWin.API
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //Bootstrap core JavaScript
+            bundles.Add(new ScriptBundle("~/bundles/vendor/jquery").Include(
+                        "~/Content/vendor/jquery/jquery.min.js",
+                        "~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"));
+             //Core plugin JavaScript
+            bundles.Add(new ScriptBundle("~/bundles/Coreplugin").Include(
+                        "~/Content/vendor/jquery-easing/jquery.easing.min.js"));
+             //Custom scripts for all pages
+            bundles.Add(new ScriptBundle("~/bundles/Customscripts").Include(
+                       "~/Content/js/sb-admin-2.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
