@@ -515,12 +515,29 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             userWinDetails.BettingAmount = GetDecimalFromDataReader(reader, "BettingAmount");
             userWinDetails.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
             userWinDetails.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
-            userWinDetails.GameCategoryId = GetLongIntegerFromDataReader(reader, "GameTypeId");
-            userWinDetails.CategoryName = GetStringFromDataReader(reader, "GameTypeName");
-            userWinDetails.GameSubCategoryId = GetLongIntegerFromDataReader(reader, "GameTypeId");
-            userWinDetails.GameSubCategoryName = GetStringFromDataReader(reader, "GameTypeName");
+            userWinDetails.GameCategoryId = GetLongIntegerFromDataReader(reader, "GameCategoryId");
+            userWinDetails.CategoryName = GetStringFromDataReader(reader, "CategoryName");
+            userWinDetails.GameSubCategoryId = GetLongIntegerFromDataReader(reader, "GameSubCategoryId");
+            userWinDetails.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
             userWinDetails.WinAmount = GetDecimalFromDataReader(reader, "WinAmount");            
             userWinDetails.WinDate = GetDateFromDataReader(reader, "WinDate");            
+            return userWinDetails;
+        }
+
+        private UserWinDetails GenerateFromDataReaderWinDetail(IDataReader reader)
+        {
+            UserWinDetails userWinDetails = new UserWinDetails();
+            userWinDetails.UserId = GetLongIntegerFromDataReader(reader, "UserId");
+            userWinDetails.GameBettingId = GetLongIntegerFromDataReader(reader, "GameBettingId");
+            userWinDetails.BettingNumber = GetIntegerFromDataReader(reader, "BettingNumber");
+            userWinDetails.BettingAmount = GetDecimalFromDataReader(reader, "BettingAmount");
+            userWinDetails.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
+            userWinDetails.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
+            userWinDetails.GameCategoryId = GetLongIntegerFromDataReader(reader, "GameCategoryId");
+            userWinDetails.CategoryName = GetStringFromDataReader(reader, "CategoryName");
+            userWinDetails.GameSubCategoryId = GetLongIntegerFromDataReader(reader, "GameSubCategoryId");
+            userWinDetails.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
+            userWinDetails.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
             return userWinDetails;
         }
 
@@ -536,7 +553,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             {
                 while (reader.Read())
                 {
-                    userWinDetails.Add(GenerateFromDataReaderWinDetails(reader));
+                    userWinDetails.Add(GenerateFromDataReaderWinDetail(reader));
                 }
             }
             return userWinDetails;
