@@ -1,19 +1,11 @@
-﻿using ReadyToWin.Complaince.Bussiness.Provider;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using ReadyToWin.Complaince.BussinessProvider.IProviders;
 using ReadyToWin.Complaince.Entities.AdminModel;
-using ReadyToWin.Complaince.Framework.Exception;
-using ReadyToWin.Complaince.Framework.Utility;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+using ReadyToWin.Complaince.Entities.ResponseModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using ReadyToWin.Complaince.Framework;
-using ReadyToWin.Complaince.Entities.RequestModels;
-using ReadyToWin.Complaince.Entities.Dashboard;
-using ReadyToWin.Complaince.Entities.ResponseModel;
-using ReadyToWin.Complaince.BussinessProvider.IProviders;
-using ReadyToWin.Complaince.Entities.UserTransaction;
-using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.Complaince.DataAccess.Repository
 {
@@ -29,7 +21,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
         {
             using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_WINNER_AMOUNT))
             {
-                
+
                 //_dbContextDQCPRDDB.AddInParameter(command, "Id", DbType.Int64, winnerUser.Id);
                 _dbContextDQCPRDDB.AddInParameter(command, "UserId", DbType.Int64, insertWinningAmount.UserId);
                 _dbContextDQCPRDDB.AddInParameter(command, "GameTypeId", DbType.Int64, insertWinningAmount.GameTypeId);
@@ -112,7 +104,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                     winningUserList.Add(GenerateFromDataReader(reader));
                 }
             }
-            return winningUserList;            
+            return winningUserList;
         }
 
         public List<Admin> ListOfUserWinningByUserId(Admin userWinbyUserId)
@@ -132,7 +124,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return winningUserListbyUserId;
 
-            
+
         }
         public DbOutput UpdateWinningUser(Admin updateWiinerUserDetails)
         {

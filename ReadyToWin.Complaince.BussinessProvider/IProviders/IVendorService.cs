@@ -7,7 +7,8 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
 {
     public interface IVendorService
     {
-        DbOutput RequestVendor(Vendor vendor);
+        DbOutput RequestVendor(ref Vendor vendor);
         List<string> GetAllVendors();
+        Customer GetCustomerTransaction(int id);
     }
 }

@@ -14,7 +14,6 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public long GameTypeId { get; set; }
         public string GameTypeName { get; set; }                     
         public int WinningNumber { get; set; }
-        public DateTime CreatedDate { get; set; }
         
     }
 }

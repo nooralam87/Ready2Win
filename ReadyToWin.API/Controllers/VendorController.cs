@@ -11,10 +11,12 @@ using EmailServer;
 using System.Threading.Tasks;
 using System.Web.Http.Description;
 using ReadyToWin.Complaince.Entities.QutationRepositry;
+using ReadyToWin.Complaince.Framework.Utility;
+using System.Configuration;
 
 namespace ReadyToWin.API.Controllers
 {
-    [RoutePrefix("api/CreateQutation")]
+    [RoutePrefix("api/Vendor")]
     public class VendorController : BaseApiController
     {
         IVendorService _vendor_service; ISmtpClient _smtpClient;
@@ -38,14 +40,18 @@ namespace ReadyToWin.API.Controllers
             {
                 vendor.IPAdress = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
+            Customer _customer = _vendor_service.GetCustomerTransaction(vendor.CustomerID);
+            vendor.CustomerEmailID = _customer.email;vendor.CustomerID = _customer.id;
             //save user
-            var output = _vendor_service.RequestVendor(vendor);
+            var output = _vendor_service.RequestVendor(ref vendor);
             string concat_email = string.Join(",", _vendor_service.GetAllVendors());
             //if (output.Message == "User created")
             //{
-                await _smtpClient.SendEmailAsync(concat_email, "Hello", "Hello, This is Email sending test using gmail.");
+            string _link_info = ConfigurationManager.AppSettings["LINK"].ToString() + EncryptionLibrary.EncryptText(vendor.CustomerID + "|" + vendor.ProductID + "|" + vendor.Price + "|" + vendor.Stock);
+                await _smtpClient.SendEmailAsync(concat_email, "Hello", string.Format("<p>Hello,</p><br><br><br><br>To complete your order right now, just click on the link below:<br><a href='{0}' target='_blank'>Your Order</a><br><br><br><p>We look forward to receiving your order!</p>", _link_info));
             //}
             return await CreateResponse(output);
         }
+
     }
 }

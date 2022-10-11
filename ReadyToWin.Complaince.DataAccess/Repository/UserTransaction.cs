@@ -13,7 +13,6 @@ using ReadyToWin.Complaince.Entities.Dashboard;
 using ReadyToWin.Complaince.Entities.ResponseModel;
 using ReadyToWin.Complaince.BussinessProvider.IProviders;
 using ReadyToWin.Complaince.Entities.UserModel;
-using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.Complaince.DataAccess.Repository
 {
@@ -111,7 +110,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
         public List<UserAmountDeposit> ListOfUserAmountDeposit()
         {
             List<UserAmountDeposit> userTransactionList = new List<UserAmountDeposit>();
-            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_AMOUNT_DEPOSIT);            
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_AMOUNT_DEPOSIT);
             _dbContextDQCPRDDB.AddOutParameter(dbCommand, "Code", DbType.String, 4000);
             _dbContextDQCPRDDB.AddOutParameter(dbCommand, "Message", DbType.String, 4000);
             _dbContextDQCPRDDB.AddInParameter(dbCommand, "StatementType", DbType.String, "Select");
@@ -256,10 +255,10 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                     userAmountWithdrawList.Add(GenerateFromDataReaderWithdraw(reader));
                 }
             }
-            return userAmountWithdrawList;          
-            
+            return userAmountWithdrawList;
+
         }
-       
+
         public List<UserAmountWithdraw> ListOfUserWithdrawRequestbyId(UserAmountWithdraw userAmountwithdraw)
         {
             List<UserAmountWithdraw> userAmountWithdrawById = new List<UserAmountWithdraw>();
@@ -276,7 +275,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 }
             }
             return userAmountWithdrawById;
-            
+
         }
         public DbOutput UserWithdrawRequest(UserAmountWithdraw userAmountwithdraw)
         {
@@ -302,7 +301,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 };
             }
         }
-        
+
         public DbOutput UpdateWithdrawRequest(UserAmountWithdraw userAmountwithdraw)
         {
             using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_AMOUNT_WITHDRAW))
@@ -360,11 +359,11 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
                 _dbContextDQCPRDDB.AddInParameter(command, "NumberType", DbType.String, userGameSelection.NumberType);
                 _dbContextDQCPRDDB.AddInParameter(command, "Amount", DbType.Decimal, userGameSelection.Amount);
                 _dbContextDQCPRDDB.AddInParameter(command, "BetNumbers", DbType.String, userGameSelection.BetNumbers);
-                _dbContextDQCPRDDB.AddInParameter(command, "BetAmounts", DbType.String, userGameSelection.BetAmounts);                
-               // _dbContextDQCPRDDB.ExecuteNonQuery(command);
+                _dbContextDQCPRDDB.AddInParameter(command, "BetAmounts", DbType.String, userGameSelection.BetAmounts);
+                // _dbContextDQCPRDDB.ExecuteNonQuery(command);
                 count = Convert.ToInt32(_dbContextDQCPRDDB.ExecuteScalar(command));
                 return count;
-                
+
             }
         }
         public decimal GetUserTotalAmount(long Id)
@@ -437,11 +436,13 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
         }
         private UserBettingDetails GenerateFromDataReaderGamePlayed(IDataReader reader)
         {
+
             UserBettingDetails userGamePlayed = new UserBettingDetails();  
             userGamePlayed.CategoryName = GetStringFromDataReader(reader, "CategoryName");            
             userGamePlayed.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");            
             userGamePlayed.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
             userGamePlayed.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");          
+
             return userGamePlayed;
         }
         private WinNumberDeclare GenerateFromDataReaderWinNumberDeclare(IDataReader reader)
@@ -450,7 +451,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             winNumber.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
             winNumber.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
             winNumber.WinningNumber = GetIntegerFromDataReader(reader, "WinningNumber");
-            winNumber.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");           
+            winNumber.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
             return winNumber;
         }
         private UserBettingDetails GenerateFromDataReaderGamePlayedList(IDataReader reader)

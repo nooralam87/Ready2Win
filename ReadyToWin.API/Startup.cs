@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 using System.Web.Http;
-using Microsoft.Owin.Cors;
-using ReadyToWin.API.Models;
 
 [assembly: OwinStartup(typeof(ReadyToWin.API.Startup))]
 
