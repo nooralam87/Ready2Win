@@ -504,5 +504,24 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             userWinDetails.WinDate = GetDateFromDataReader(reader, "WinDate");            
             return userWinDetails;
         }
+
+        public List<UserWinDetails> GetUserBiddingOnCategoryName(UserWinDetails userWinDetailsList)
+        {
+            List<UserWinDetails> userWinDetails = new List<UserWinDetails>();
+
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_WIN_LIST);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "UserId", DbType.Int64, userWinDetailsList.UserId);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, userWinDetailsList.GameTypeId);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "CategoryName", DbType.Int64, userWinDetailsList.CategoryName);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userWinDetails.Add(GenerateFromDataReaderWinDetails(reader));
+                }
+            }
+            return userWinDetails;
+
+        }
     }
 }
