@@ -233,5 +233,40 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
 
         }
+        public List<AmountOnGameByGameType> ListOfAmountOnGameByGameType(long GameTypeId)
+        {
+            List<AmountOnGameByGameType> ListbyGameTypeId = new List<AmountOnGameByGameType>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.AMOUNT_ON_GAME_BY_GAMETYPEID);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, GameTypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    ListbyGameTypeId.Add(GenerateFromDataReaderForAmountOnGame(reader));
+                }
+            }
+            return ListbyGameTypeId;
+        }
+        private AmountOnGameByGameType GenerateFromDataReaderForAmountOnGame(IDataReader reader)
+        {
+            AmountOnGameByGameType userList = new AmountOnGameByGameType();
+            userList.GameBettingId = GetLongIntegerFromDataReader(reader, "GameBettingId");
+            userList.UserId = GetLongIntegerFromDataReader(reader, "UserId");
+            userList.UserName = GetStringFromDataReader(reader, "UserName");
+            userList.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
+            userList.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
+            userList.GameCategoryId = GetLongIntegerFromDataReader(reader, "GameCategoryId");
+            userList.CategoryName = GetStringFromDataReader(reader, "CategoryName");
+            userList.GameSubCategoryId = GetLongIntegerFromDataReader(reader, "GameSubCategoryId");
+            userList.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
+            //userList.NumberType = GetStringFromDataReader(reader, "NumberType");
+            userList.BetAmount = GetDecimalFromDataReader(reader, "BetAmount");
+            //userList.Remarks = GetStringFromDataReader(reader, "Remarks");
+            //userList.ApprovedAmount = GetDoubleFromDataReader(reader, "ApprovedAmount");            
+            userList.BetNumber = GetIntegerFromDataReader(reader, "BetNumber");            
+            userList.createdDate = GetDateFromDataReader(reader, "CreatedDate");
+            
+            return userList;
+        }
     }
 }
