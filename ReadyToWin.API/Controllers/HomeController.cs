@@ -55,6 +55,21 @@ namespace ReadyToWin.API.Controllers
             List<UserAmountWithdraw> output = _iUserTransaction.ListOfUserWithdrawRequest();
             return View(output);
         }
+
+        [ActionName("GetAllAmountOnGameByGameType")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AmountOnGameByGameType(long _gametypeId=1)
+        {
+            List<AmountOnGameByGameType> output = _iAdminRepository.ListOfAmountOnGameByGameType(_gametypeId);
+            return View(output);
+        }
+        [ActionName("Charts")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Charts(long _gametypeId = 1)
+        {
+            List<AmountOnGameByGameType> output = _iAdminRepository.ListOfAmountOnGameByGameType(_gametypeId);
+            return View(output);
+        }
         public JsonResult ApproveReject(long _id, long _usrId, string type)
         {
             Admin userAmountApproved = new Admin()

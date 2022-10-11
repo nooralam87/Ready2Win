@@ -2156,6 +2156,8 @@
     <Content Include="Views\Winning\Create.cshtml" />
     <Content Include="Views\Winning\Details.cshtml" />
     <Content Include="Views\Winning\Index.cshtml" />
+    <Content Include="Views\Home\GetAllAmountOnGameByGameType.cshtml" />
+    <Content Include="Views\Home\Charts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmailServer\EmailServer.csproj">
