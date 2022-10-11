@@ -528,10 +528,10 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
         {
             List<UserWinDetails> userWinDetails = new List<UserWinDetails>();
 
-            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_WIN_LIST);
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_NUMBER_BY_GAMECATEGORY);
             _dbContextDQCPRDDB.AddInParameter(dbCommand, "UserId", DbType.Int64, userWinDetailsList.UserId);
             _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.Int64, userWinDetailsList.GameTypeId);
-            _dbContextDQCPRDDB.AddInParameter(dbCommand, "CategoryName", DbType.Int64, userWinDetailsList.CategoryName);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "CategoryName", DbType.String, userWinDetailsList.CategoryName);
             using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
             {
                 while (reader.Read())
