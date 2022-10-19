@@ -262,12 +262,17 @@
     <Compile Include="Providers\MyAuthenticationFilter.cs" />
     <Compile Include="Providers\MyBasicAuthenticationFilter.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\GameResultFilter.cs" />
     <Compile Include="ViewModel\GameWinning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\sb-admin-2.css" />
+    <Content Include="Content\css\sb-admin-2.min.css" />
     <Content Include="Content\img\loaderio.png" />
     <Content Include="Content\img\undraw_posting_photo.svg" />
     <Content Include="Content\img\undraw_profile.svg" />
@@ -275,6 +280,12 @@
     <Content Include="Content\img\undraw_profile_2.svg" />
     <Content Include="Content\img\undraw_profile_3.svg" />
     <Content Include="Content\img\undraw_rocket.svg" />
+    <Content Include="Content\js\demo\chart-area-demo.js" />
+    <Content Include="Content\js\demo\chart-bar-demo.js" />
+    <Content Include="Content\js\demo\chart-pie-demo.js" />
+    <Content Include="Content\js\demo\datatables-demo.js" />
+    <Content Include="Content\js\sb-admin-2.js" />
+    <Content Include="Content\js\sb-admin-2.min.js" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2111,6 +2122,29 @@
     <Content Include="Content\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Content\scss\navs\_global.scss" />
+    <Content Include="Content\scss\navs\_sidebar.scss" />
+    <Content Include="Content\scss\navs\_topbar.scss" />
+    <Content Include="Content\scss\sb-admin-2.scss" />
+    <Content Include="Content\scss\utilities\_animation.scss" />
+    <Content Include="Content\scss\utilities\_background.scss" />
+    <Content Include="Content\scss\utilities\_border.scss" />
+    <Content Include="Content\scss\utilities\_display.scss" />
+    <Content Include="Content\scss\utilities\_progress.scss" />
+    <Content Include="Content\scss\utilities\_rotate.scss" />
+    <Content Include="Content\scss\utilities\_text.scss" />
+    <Content Include="Content\scss\_buttons.scss" />
+    <Content Include="Content\scss\_cards.scss" />
+    <Content Include="Content\scss\_charts.scss" />
+    <Content Include="Content\scss\_dropdowns.scss" />
+    <Content Include="Content\scss\_error.scss" />
+    <Content Include="Content\scss\_footer.scss" />
+    <Content Include="Content\scss\_global.scss" />
+    <Content Include="Content\scss\_login.scss" />
+    <Content Include="Content\scss\_mixins.scss" />
+    <Content Include="Content\scss\_navs.scss" />
+    <Content Include="Content\scss\_utilities.scss" />
+    <Content Include="Content\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\FinalPublish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\demo\chart-area-demo.js" />
@@ -2158,6 +2192,8 @@
     <Content Include="Views\Winning\Index.cshtml" />
     <Content Include="Views\Home\GetAllAmountOnGameByGameType.cshtml" />
     <Content Include="Views\Home\Charts.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutDashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmailServer\EmailServer.csproj">

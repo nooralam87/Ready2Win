@@ -11,6 +11,7 @@ using ReadyToWin.Complaince.Framework.Base;
 
 namespace ReadyToWin.API.Controllers
 {
+    [CustomAuthorize(Roles = "Admin")]
     [RoutePrefix("api/Admin")]
     public class AdminController : BaseApiController
     {
@@ -26,13 +27,12 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
         [HttpPost]
         [Route("UserDepositAmountApproved")]
         [ResponseType(typeof(Response<Admin>))]
         public async Task<HttpResponseMessage> UserDepositAmountApproved(Admin userAmountApproved)
         {
+
             var output = _iAdminRepository.UserDepositAmountApproved(userAmountApproved);
             return await CreateResponse(output);
         }
@@ -42,8 +42,6 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
         [HttpPost]
         [Route("UserWithdrawAmountApproved")]
         [ResponseType(typeof(Response<Admin>))]
@@ -57,8 +55,6 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
        [HttpGet]
        [Route("ListOfUserAmountDeposit")]
        [ResponseType(typeof(Response<Admin>))]
@@ -73,8 +69,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("ListOfUserAmountDepositbyId")]
         [ResponseType(typeof(Response<UserAmountDeposit>))]
@@ -85,8 +80,6 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(output);
         }
 
-       [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
        [HttpPost]
        [Route("UpdateAmountDeposit")]
        [ResponseType(typeof(Response<Admin>))]
@@ -102,8 +95,7 @@ namespace ReadyToWin.API.Controllers
        /// </summary>
        /// <param name="user"></param>
        /// <returns></returns>
-       [CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
+       
        [HttpGet]
        [Route("ListOfUserWithdrawRequest")]
        [ResponseType(typeof(Response<Admin>))]
@@ -118,8 +110,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("ListOfUserWithdrawRequestbyId")]
         [ResponseType(typeof(Response<Admin>))]
@@ -134,8 +125,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-       [CustomAuthorize(Roles = "Admin, User")]
-       [AllowAnonymous]
+       
        [HttpPost]
        [Route("UpdateWithdrawRequest")]
        [ResponseType(typeof(Response<Admin>))]
@@ -144,8 +134,7 @@ namespace ReadyToWin.API.Controllers
            var output = _iUserTransaction.UpdateWithdrawRequest(userAmountwithdraw);
            return await CreateResponse(output);
        }
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+        
         [HttpPost]
         [Route("DeclaredWinningNumber")]
         [ResponseType(typeof(Response<Admin>))]
@@ -160,8 +149,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("ListOfAmountOnGameByGameType")]
         [ResponseType(typeof(Response<AmountOnGameByGameType>))]

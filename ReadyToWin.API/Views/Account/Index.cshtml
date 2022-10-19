@@ -1,46 +1,55 @@
 ﻿@model ReadyToWin.API.Models.LoginViewModel
 
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<style type="text/css">
+    .custom-control-input {
+        z-index: 1 !important;
     }
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>User Login</h4>
-            <hr />
-            @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <h4>User Login</h4>
+        <hr />
+        @Html.ValidationSummary(true)
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Username)
-                    @Html.ValidationMessageFor(model => model.Username)
-                </div>
-            </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">*@
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control form-control-user" })
+                @Html.ValidationMessageFor(model => model.Username)
+            @*</div>*@
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password)
-                    @Html.ValidationMessageFor(model => model.Password)
-                </div>
-            </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">*@
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-user" })
+                @Html.ValidationMessageFor(model => model.Password)
+            @*</div>*@
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.RememberMe, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.RememberMe)
-                    @Html.ValidationMessageFor(model => model.RememberMe)
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Login" class="btn btn-default" />
-                </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.RememberMe, new { @class = "control-label col-md-2" })*@
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBoxFor(model => model.RememberMe, new { @class = "custom-control-input" })
+                <label class="custom-control-label" for="customCheck">
+                    Remember
+                    Me
+                </label>
+                @Html.ValidationMessageFor(model => model.RememberMe)
             </div>
         </div>
-    }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" />
+            </div>
+        </div>
+    </div>
+}

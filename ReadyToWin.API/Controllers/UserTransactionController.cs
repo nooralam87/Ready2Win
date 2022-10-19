@@ -1,25 +1,16 @@
-﻿using ReadyToWin.Complaince.Framework.Base;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Threading.Tasks;
-using ReadyToWin.Complaince.Entities.UserTransaction;
+﻿using ReadyToWin.API.Filters;
 using ReadyToWin.Complaince.BussinessProvider.IProviders;
-using ReadyToWin.API.Filters;
-using System.Web.Http.Description;
-using System.Collections.Generic;
-using ReadyToWin.Complaince.Entities.RequestModels;
-using ReadyToWin.Complaince.Framework.Utility;
 using ReadyToWin.Complaince.Entities.ResponseModel;
-using ReadyToWin.Complaince.Entities.Constant;
-using System.Data;
-using System;
-using System.Security.Claims;
-using ReadyToWin.API.Models;
-using ReadyToWin.Complaince.Entities.GameType;
+using ReadyToWin.Complaince.Entities.UserTransaction;
+using ReadyToWin.Complaince.Framework.Base;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace ReadyToWin.API.Controllers
 {
+    [CustomAuthorize(Roles = "Admin,Player")]
     [RoutePrefix("api/UserTransaction")]
     public class UserTransactionController : BaseApiController
     {
@@ -35,8 +26,7 @@ namespace ReadyToWin.API.Controllers
        /// </summary>
        /// <param name="user"></param>
        /// <returns></returns>
-       //[CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
+       
        [HttpGet]
        [Route("ListOfUserAmountDepositByUserId")]
        [ResponseType(typeof(Response<UserAmountDeposit>))]
@@ -52,8 +42,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        //[CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("RecentTransaction")]
         [ResponseType(typeof(Response<UserAmountDeposit>))]
@@ -68,8 +57,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        //[CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
+        
        [HttpPost]
        [Route("AddUserAmountDeposit")]
        [ResponseType(typeof(Response<UserAmountDeposit>))]
@@ -84,8 +72,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        //[CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+       
         [HttpPost]
         [Route("UserWithdrawRequest")]
         [ResponseType(typeof(Response<UserAmountWithdraw>))]
@@ -100,8 +87,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        //[CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
+        
        [HttpGet]
        [Route("ListOfUserWithdrawRequestByUserId")]
        [ResponseType(typeof(Response<UserAmountWithdraw>))]
@@ -116,8 +102,7 @@ namespace ReadyToWin.API.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        //[CustomAuthorize(Roles = "Admin")]
-        [AllowAnonymous]
+       
         [HttpGet]
         [Route("RecentTransactionWithdrawAmount")]
         [ResponseType(typeof(Response<UserAmountWithdraw>))]
@@ -149,8 +134,7 @@ namespace ReadyToWin.API.Controllers
        /// </summary>
        /// <param name="user"></param>
        /// <returns></returns>
-       //[CustomAuthorize(Roles = "Admin")]
-       [AllowAnonymous]
+       
        [HttpPost]
        [Route("UserGameSelectionSubmit")]
        [ResponseType(typeof(Response<UserGameSelection>))]
@@ -160,7 +144,7 @@ namespace ReadyToWin.API.Controllers
            return await CreateResponse(count.ToString());
        }
 
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("GetUserTotalAmount")]
         [ResponseType(typeof(string))]
@@ -170,7 +154,7 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(count.ToString());
         }
 
-        [AllowAnonymous]
+       
         [HttpGet]
         [Route("GetUserGameListbyUserIdandGameTypeId")]
         [ResponseType(typeof(Response<UserBettingDetails>))]
@@ -181,7 +165,7 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(_iUserTransaction.GetUserGameListbyUserIdandGameTypeId(UserId, GameTypeId));
         }
 
-        [AllowAnonymous]
+       
         [HttpGet]
         [Route("GetUserGameListbyGameTypeId")]
         [ResponseType(typeof(Response<UserBettingDetails>))]
@@ -192,7 +176,7 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(_iUserTransaction.GetUserGameListbyGameTypeId(GameTypeId));
         }
 
-        [AllowAnonymous]
+       
         [HttpGet]
         [Route("GetUserGameListbyGameSelectionId")]
         [ResponseType(typeof(Response<UserBettingDetails>))]
@@ -202,7 +186,7 @@ namespace ReadyToWin.API.Controllers
             //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
             return await CreateResponse(_iUserTransaction.GetUserGameListbyGameSelectionId(GameSelectionId));
         }
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("GetWinningDeclareNumberHistory")]
         [ResponseType(typeof(Response<WinNumberDeclare>))]
@@ -213,7 +197,7 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(_iUserTransaction.GetWinningDeclareNumberHistory(GameTypeId));
         }
 
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("GetUserWinDetails")]
         [ResponseType(typeof(Response<UserWinDetails>))]
@@ -224,7 +208,7 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(_iUserTransaction.GetUserWinDetails(userAmountwithdraw));
         }
 
-        [AllowAnonymous]
+        
         [HttpGet]
         [Route("GetLatestWinNumberDeclare")]
         [ResponseType(typeof(Response<WinNumberDeclare>))]
@@ -234,7 +218,17 @@ namespace ReadyToWin.API.Controllers
             //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
             return await CreateResponse(_iUserTransaction.GetLatestWinNumberDeclare());
         }
-        [AllowAnonymous]
+
+        [HttpGet]
+        [Route("GetAllGameWinningNumber")]
+        [ResponseType(typeof(DbOutput))]
+        public async Task<HttpResponseMessage> GetAllGameWinningNumber()
+        {
+            var output = _iUserTransaction.GetAllGameWinningNumber();
+            return await CreateResponse(output);
+        }
+
+        
         [HttpGet]
         [Route("GetUserBiddingOnCategoryName")]
         [ResponseType(typeof(Response<UserWinDetails>))]

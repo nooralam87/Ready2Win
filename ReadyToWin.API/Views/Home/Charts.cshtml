@@ -1,76 +1,344 @@
-﻿@model IEnumerable<ReadyToWin.Complaince.Entities.AdminModel.AmountOnGameByGameType>
+﻿@model ReadyToWin.API.ViewModel.GameResultFilter
 
 @{
     ViewBag.Title = "Charts";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
+
+<style type="text/css">
+    tr {
+        display: block;
+        float: left;
+    }
+
+    th, td {
+        display: block;
+    }
+    /* single-row column design */
+    tr {
+        display: block;
+        float: left;
+    }
+
+    th, td {
+        display: block;
+        border: 1px solid black;
+    }
+
+    /* border-collapse */
+    tr > *:not(:first-child) {
+        border-top: 0;
+    }
+
+    tr:not(:first-child) > * {
+        border-left: 0;
+    }
+
+    .border-top-primary {
+        border: 1px solid #c2c3c5 !important;
+        border-bottom: 0.25rem solid #4e73df !important;
+        border-radius: 8px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0.5rem 1rem;
+        height: 4.375rem;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="row border-top-primary">
+        <div class="col">
+            @Html.DropDownListFor(model => model.gametypeId, new SelectList(Model.GameNames.AsEnumerable(), "GameTypeId", "GameName"), new { @class = "form-control" })
+        </div>
+        <div class="col">
+            @Html.DropDownListFor(model => model.userId, new SelectList(Model.Users.AsEnumerable().OrderBy(x => x.userId), "userId", "MyUserName"), "Select User", new { @class = "form-control" })
+        </div>
+        @*<div class="col">
+                @Html.DropDownListFor(model => model.selecteddate, new SelectList(Model.GameDate.AsEnumerable(), "Id", "gamedate"), "Select Date", new { @class = "form-control" })
+            </div>*@
+        <div class="col">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Split Amount" aria-label="Split Amount">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-    <p class="mb-4">
-        Chart.js is a third party plugin that is used to generate the charts in this theme.
-        The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">
-            official Chart.js
-            documentation
-        </a>.
-    </p>
+    @*<h1 class="h3 mb-2 text-gray-800">Charts</h1>*@
+    @*<p class="mb-4">
+            Chart.js is a third party plugin that is used to generate the charts in this theme.
+            The charts below have been customized - for further customization options, please visit the <a target="_blank" href="https://www.chartjs.org/docs/latest/">
+                official Chart.js
+                documentation
+            </a>.
+        </p>*@
 
     <!-- Content Row -->
     <div class="row">
-
-        <div class="col-xl-12 col-lg-12">
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
-                    <hr>
-                    Styling for the area chart can be found in the
-                    <code>/js/demo/chart-area-demo.js</code> file.
-                </div>
-            </div>
-
-            <!-- Bar Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar">
-                        <canvas id="myBarChart"></canvas>
-                    </div>
-                    <hr>
-                    Styling for the bar chart can be found in the
-                    <code>/js/demo/chart-bar-demo.js</code> file.
-                </div>
-            </div>
-
-        </div>
         <!-- Donut Chart -->
         <div class="col-xl-12 col-lg-12">
-            <div class="card shadow">
+
+            <div class="card shadow mb-8 m-2">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
                    role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                    <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Chart TotalAmount : @Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(y => y.CategoryName.ToUpper() == "CROSSING" || y.CategoryName.ToUpper() == "DOUBLE").Sum(x => x.BetAmount)))</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardExample">
                     <div class="card-body">
-                        This is a collapsable card example using Bootstrap's built in collapse
-                        functionality. <strong>Click on the card header</strong> to see the card body
-                        collapse and expand!
+                        <div class="table-responsive table-responsive-lg table-responsive-md table-responsive-sm">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <table class="table table-bordered dataTable">
+                                        <tbody>
+                                            <tr>
+                                                @for (int i = 1; i <= 10; i++)
+                                                {
+                                                    <td>
+                                                        <a href="#" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 11; i <= 20; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 21; i <= 30; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 31; i <= 40; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 41; i <= 50; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 51; i <= 60; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 61; i <= 70; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 71; i <= 80; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 81; i <= 90; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @for (int i = 91; i <= 99; i++)
+                                                {
+                                                    <td>
+                                                        <a href="GetAmountOnGameByUser/@i.ToString()" class="btn btn-light btn-icon-split btn-sm">
+                                                            <span class="icon text-gray-600">
+                                                                @i.ToString()
+                                                            </span>
+                                                            <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                        </a>
+                                                        <div class="my-2"></div>
+                                                    </td>
+                                                }
+                                                <td>
+                                                    <a href="GetAmountOnGameByUser/0" class="btn btn-light btn-icon-split btn-sm">
+                                                        <span class="icon text-gray-600">
+                                                            00
+                                                        </span>
+                                                        <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == 0 && (x.CategoryName.ToUpper() == "CROSSING" || x.CategoryName.ToUpper() == "DOUBLE")).Sum(x => x.BetAmount)))</strong>
+                                                    </a>
+                                                    <div class="my-2"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Haraf Andar-->
+            <div class="card shadow mb-8 m-2">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardAndarHaraf" class="d-block card-header py-3" data-toggle="collapse"
+                   role="button" aria-expanded="true" aria-controls="collapseCardAndarHaraf">
+                    <h6 class="m-0 font-weight-bold text-primary">Andar Haraf TotalAmount : @Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(y => y.CategoryName.ToUpper() == "HARAF" && y.GameSubCategoryName == "Andar Harup").Sum(x => x.BetAmount)))</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardAndarHaraf">
+                    <div class="card-body">
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <a href="#" class="btn btn-light btn-icon-split">
+
+                                <span class="icon text-gray-600">
+                                    @i.ToString()
+                                </span>
+                                <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && x.CategoryName.ToUpper() == "HARAF" && x.GameSubCategoryName == "Andar Harup").Sum(x => x.BetAmount)))</strong>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!--Haraf Bahar-->
+            <div class="card shadow mb-8 m-2">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardBaharHaraf" class="d-block card-header py-3" data-toggle="collapse"
+                   role="button" aria-expanded="true" aria-controls="collapseCardBaharHaraf">
+                    <h6 class="m-0 font-weight-bold text-primary">Bahar Haraf TotalAmount : @Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(y => y.CategoryName.ToUpper() == "HARAF" && y.GameSubCategoryName == "Bahar Harup").Sum(x => x.BetAmount)))</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardBaharHaraf">
+                    <div class="card-body">
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <a href="#" class="btn btn-light btn-icon-split">
+
+                                <span class="icon text-gray-600">
+                                    @i.ToString()
+                                </span>
+                                <strong class="text">@Convert.ToString(Math.Truncate(Model.AmountOnGameByGameType.Where(x => x.BetNumber == i && x.CategoryName.ToUpper() == "HARAF" && x.GameSubCategoryName == "Bahar Harup").Sum(x => x.BetAmount)))</strong>
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Content Row -->
 </div>
 <!-- /.container-fluid -->
+@section scripts {
+    <!-- Page level plugins -->
+    @*<script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*$('#exampletbl').DataTable();*/
+            //Transpose Rows to Column start
+            var t = $('#thetable tbody').eq(0);
+            var r = t.find('tr');
+            var cols = r.length;
+            var rows = r.eq(0).find('td').length;
+            var cell, next, tem, i = 0;
+            var tb = $('<tbody></tbody>');
+
+            while (i < rows) {
+                cell = 0;
+                tem = $('<tr></tr>');
+                while (cell < cols) {
+                    next = r.eq(cell++).find('td').eq(0);
+                    tem.append(next);
+                }
+                tb.append(tem);
+                ++i;
+            }
+            $('#thetable').append(tb);
+            $('#thetable').show();
+            //Transpose Rows to Column End
+        });
+    </script>
+}

@@ -16,6 +16,7 @@ using System.Data;
 using System;
 using System.Security.Claims;
 using ReadyToWin.API.Models;
+using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.API.Controllers
 {
@@ -85,7 +86,8 @@ namespace ReadyToWin.API.Controllers
                 user.IPAdress = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
             //save user
-            var output = _iUserProvider.Add(user);                
+            var output = _iUserProvider.Add(user);
+            _iUserProvider.AssignRole(new AssignRoleModel() { RoleId=2,UserId= user.Mobile,CreatedBy=user.UserName });
             return await CreateResponse(output); 
         }
 
@@ -287,6 +289,16 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(output);
         }
 
+        
+        [HttpGet]
+        [CustomAuthorize(Roles = "Player,Admin")]
+        [Route("GetCurrentDateTime")]
+        [ResponseType(typeof(Response<DbOutput>))]
+        public async Task<HttpResponseMessage> GetCurrentDateTime(long gametypeId)
+        {
+            var output = _iUserProvider.GetCurrentDateTime(gametypeId);
+            return await CreateResponse(output, Convert.ToString(typeof(GameType).Name));
+        }
         //[Route("Validate")]
         //[HttpGet]
         //public Task<HttpResponseMessage> Validate(string token, string username)
@@ -312,6 +324,6 @@ namespace ReadyToWin.API.Controllers
         //        Message = "Invalid Token."
         //    };
         //}
-        
+
     }
 }

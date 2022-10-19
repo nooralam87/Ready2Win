@@ -11,6 +11,7 @@ using ReadyToWin.Complaince.Framework;
 using ReadyToWin.Complaince.Entities.RequestModels;
 using ReadyToWin.Complaince.Entities.Dashboard;
 using ReadyToWin.Complaince.Entities.ResponseModel;
+using ReadyToWin.Complaince.Entities.GameType;
 
 namespace ReadyToWin.Complaince.DataAccess.UserRepositry
 {
@@ -264,7 +265,7 @@ namespace ReadyToWin.Complaince.DataAccess.UserRepositry
         }
 
         public DbOutput AssignRole(AssignRoleModel model)
-        {
+        { 
             using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.CREATE_ROLE))
             {
                 _dbContextDQCPRDDB.AddInParameter(command, "UserId", DbType.String, model.UserId);
@@ -463,7 +464,21 @@ namespace ReadyToWin.Complaince.DataAccess.UserRepositry
 
             return new DataTable();
         }
-
+        public GameType GetCurrentDateTime(long gametypeId)
+        {
+            GameType game = new GameType();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.GET_DATE);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "GameTypeId", DbType.String, gametypeId);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    game.Status = GetIntegerFromDataReader(reader, "Status");
+                    game.Duration = GetIntegerFromDataReader(reader, "Duration");
+                }
+            }
+            return game;
+        }
         public DbOutput SendPasswordChangeEmail(string userId)
         {
             return new DbOutput();

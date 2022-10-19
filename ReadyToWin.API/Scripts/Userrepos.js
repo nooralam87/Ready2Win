@@ -5,11 +5,9 @@ $(document).ready(function () {
 function GetAllData() {
   $.ajax({
     type: 'GET',
-    url: ' http://www.ready2Enjoy.somee.com/api/user/GetAllUsers',
+      url: 'GetUsers',
     headers: {
-      "Content-Type": "application/json",
-      "token": "Ydjca2I4rh+WzDvZbuHjRDIXRwiBjyvYNNdUtrOo99QD26IrsLK1MgX7nnJRsQS5"
-
+      "Content-Type": "application/json"
     },
     success: function (data) {
       //_last_id=data.length+1;

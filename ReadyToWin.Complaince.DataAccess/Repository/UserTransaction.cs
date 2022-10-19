@@ -434,6 +434,19 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             }
             return winNumberDeclare;
         }
+        public List<WinNumberDeclare> GetAllGameWinningNumber()
+        {
+            List<WinNumberDeclare> winNumberDeclare = new List<WinNumberDeclare>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.ALL_WIN_NUMBER_DECLARE);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    winNumberDeclare.Add(GenerateFromDataReaderWinNumberDeclare(reader));
+                }
+            }
+            return winNumberDeclare;
+        }
         public List<UserBettingDetails> GetUserGameListbyGameSelectionId(long GameSelectionId)
         {
             List<UserBettingDetails> userGameSelectionsList = new List<UserBettingDetails>();

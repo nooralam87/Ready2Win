@@ -27,6 +27,7 @@ namespace ReadyToWin.Complaince.Entities.GameType
         [Required]
         [Display(Name = "Duration")]
         public int Duration { get; set; }
+        public int Status { get; set; }
 
     }
 }

@@ -1,10 +1,39 @@
-﻿@model IEnumerable<ReadyToWin.Complaince.Entities.AdminModel.AmountOnGameByGameType>
+﻿@model ReadyToWin.API.ViewModel.GameResultFilter
 
 @{
     ViewBag.Title = "AmountOnGameByGameType";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<style type="text/css">
+    .border-top-primary {
+        border: 1px solid #c2c3c5 !important;
+        border-bottom: 0.25rem solid #4e73df !important;
+        border-radius: 8px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0.5rem 1rem;
+        height: 4.375rem;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <div class="row border-top-primary">
+        <div class="col">
+            @Html.DropDownListFor(model => model.gametypeId, new SelectList(Model.GameNames.AsEnumerable(), "GameTypeId", "GameName"), new { @class = "form-control" })
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @*<input type="text" class="form-control" placeholder="Split Amount" aria-label="Split Amount">*@
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -25,33 +54,33 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.UserId)
+                                UserId
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.UserName)
+                               UserName
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.GameTypeName)
+                                GameTypeName
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.CategoryName)
+                               CategoryName
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.GameSubCategoryName)
+                                GameSubCategoryName
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.BetNumber)
+                               BetNumber
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.BetAmount)
+                                BetAmount
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.createdDate)
+                                createdDate
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.AmountOnGameByGameType)
                         {
                             <tr>
                                 <td>

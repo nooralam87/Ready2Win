@@ -180,6 +180,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             {
                 _dbContextDQCPRDDB.AddInParameter(command, "Id", DbType.Int64, approvedAmount.Id);
                 _dbContextDQCPRDDB.AddInParameter(command, "UserId", DbType.Int64, approvedAmount.UserId);
+                _dbContextDQCPRDDB.AddInParameter(command, "Status", DbType.String, approvedAmount.Status);
                 _dbContextDQCPRDDB.AddInParameter(command, "ApprovedAmount", DbType.Decimal, approvedAmount.ApprovedAmount);
                 _dbContextDQCPRDDB.AddInParameter(command, "Remarks", DbType.String, approvedAmount.Remarks);
                 _dbContextDQCPRDDB.AddInParameter(command, "AdminUserId", DbType.Int64, approvedAmount.AdminUserId);

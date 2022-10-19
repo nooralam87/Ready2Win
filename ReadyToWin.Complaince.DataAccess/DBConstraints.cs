@@ -36,6 +36,7 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string CHANGE_PASSWORD = "usp_change_password";
         public const string RESET_PASSWORD = "usp_reset_password";
         public const string USER_REPORT_PERMISSION = "usp_select_user_report_permission";
+        public const string GET_DATE = "usp_select_curret_date";
         public const string EXPORT_USERS = "usp_export_users";
 
 
@@ -49,6 +50,7 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string USER_WIN_LIST = "usp_user_win_list";
         public const string USER_NUMBER_BY_GAMECATEGORY = "usp_user_number_by_gamecategory";
         public const string LATEST_WIN_NUMBER_DECLARE = "usp_latest_win_number";
+        public const string ALL_WIN_NUMBER_DECLARE = "usp_all_game_win_number";
 
         //Admin declare Winner User      
         public const string USER_WINNER_AMOUNT = "usp_user_winning_amount";

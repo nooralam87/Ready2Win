@@ -14,22 +14,22 @@ namespace ReadyToWin.Complaince.Framework.Exception
         {
             string exceptionMessage = string.Empty;
 
-            if (actionExecutedContext == null 
-                || actionExecutedContext.Exception.InnerException == null)
-            {
-                exceptionMessage = actionExecutedContext.Exception.Message;
-            }
-            else if (actionExecutedContext.Exception is SecurityException)
-            {
-                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            }
-            else
-            {
-                exceptionMessage = actionExecutedContext.Exception.InnerException.Message;
-            }
+            //if (actionExecutedContext == null 
+            //    || actionExecutedContext.Exception.InnerException == null)
+            //{
+            //    exceptionMessage = actionExecutedContext.Exception.Message;
+            //}
+            //else if (actionExecutedContext.Exception is SecurityException)
+            //{
+            //    actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            //}
+            //else
+            //{
+            //    exceptionMessage = actionExecutedContext.Exception.InnerException.Message;
+            //}
 
-            var errorMesaage = Response<string>.CreateResponse(500, "Internal Server Error", actionExecutedContext.Exception.ToString());
-
+            //var errorMesaage = Response<string>.CreateResponse(500, "Internal Server Error", actionExecutedContext.Exception.ToString());
+            var errorMesaage = Response<string>.CreateResponse(500, "Internal Server Error", "Call on HelpLine Number");
             var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
             {
                 Content = new StringContent(errorMesaage.ToJson(), Encoding.UTF8, "application/json")

@@ -1,4 +1,5 @@
 ﻿using ReadyToWin.Complaince.Entities.Dashboard;
+using ReadyToWin.Complaince.Entities.GameType;
 using ReadyToWin.Complaince.Entities.RequestModels;
 using ReadyToWin.Complaince.Entities.ResponseModel;
 using ReadyToWin.Complaince.Entities.UserModel;
@@ -40,5 +41,6 @@ namespace ReadyToWin.Complaince.Bussiness.Provider.UserRepositry
         List<ModuleReports> GetReportsByUserPermission(string userId);
         DataTable GenerateCSV();
         DbOutput SendPasswordChangeEmail(string userId);
+        GameType GetCurrentDateTime(long gametypeId);
     }
 }

@@ -75,7 +75,6 @@ namespace ReadyToWin.API.Filters
                 return;
             }
         }
-
         private bool FindActionInRoles(string[] roles, string attrRoles)
         {
             if (roles.Any(r => attrRoles.Split(',').Contains(r)))
