@@ -1,0 +1,138 @@
+﻿
+@model IEnumerable<ReadyToWin.Complaince.Entities.UserTransaction.UserAmountWithdraw>
+
+@{
+    ViewBag.Title = "Withdraw Request";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <b>Withdraw Request</b></h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> View Report
+        </a>
+    </div>
+</div>
+<div class="container">
+    <h3> <B> RECENT Amount Deposited ACTIVITY </B></h3>
+    <div class="table-responsive">
+        <table id="exampletbl" class="table table-hover display">
+            <thead style="color:#4e73df;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RequestedAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MobileNoForPayment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.ApprovedAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PaymentModeId)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="color: #4e73df;">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobileNoForPayment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.ApprovedAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentModeId)
+
+        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </td>
+                        <td>
+                            @if (item.Status != "Approved" && item.Status != "Rejected")
+                            {
+                                <img id="@(item.Id)img_loading" src="~/Content/img/loaderio.gif" style="width: 40px;display:none;" />
+                                <button id="@(item.Id)approve" type="button" onclick="ApproveReject(@item.Id,@item.UserId,'A');" class="btn btn-success"> Approved</button>
+                                <button id="@(item.Id)reject" type="button" onclick="ApproveReject(@item.Id,@item.UserId,'R');" class="btn btn-danger"> Reject</button>
+                                <span id="@(item.Id)isaprejectmsg"></span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts {
+    <!-- Core plugin JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        function ApproveReject(_id, _usrId, type) {
+            $('#' + _id + 'img_loading').show();
+            $('#' + _id + 'approve,#' + _id + 'reject').hide();
+            callControllerMethod2(_id, _usrId, type, _id);
+            //setTimeout(function () {
+            //    $('#' + _id + 'img_loading').hide();
+            //    $('#' + _id + 'isaprejectmsg').text(type == 'A' ? 'Approved' : 'Reject');
+            //}, 3000);
+        }
+        function callControllerMethod2(value1, value2, value3, _id) {
+            var response = null;
+            var _url = "ApproveRejectWithdraw?_id=" + value1 + "&_usrId=" + value2 + "&type=" + value3;
+            debugger
+            $.ajax({
+                async: true,
+                url: _url,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    debugger
+                    receiveResponse(data, _id, value3);
+                },
+                failure: function (xhr, status, error) {
+                    debugger
+                    alert(xhr.responseText);
+                }
+            });
+        }
+        function receiveResponse(response, _id, type) {
+            debugger
+            if (response != null && response.Code == 205) {
+                alert(response.Message);
+                $('#' + _id + 'img_loading').hide();
+                $('#' + _id + 'isaprejectmsg,#' + _id + 'statusmsg').text(type == 'A' ? 'Approved' : 'Reject');
+            }
+        }
+        $(document).ready(function () {
+            $('#exampletbl').DataTable();
+        });
+    </script>
+}

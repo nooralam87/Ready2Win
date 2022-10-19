@@ -1,0 +1,12 @@
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\bin\Debug\EmailServer.dll
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\bin\Debug\EmailServer.pdb
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Debug\EmailServer.csproj.AssemblyReference.cache
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Debug\EmailServer.csproj.CoreCompileInputs.cache
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Debug\EmailServer.dll
+C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Debug\EmailServer.pdb
+E:\NoorRepositry\EmailServer\bin\Debug\EmailServer.dll
+E:\NoorRepositry\EmailServer\bin\Debug\EmailServer.pdb
+E:\NoorRepositry\EmailServer\obj\Debug\EmailServer.csproj.AssemblyReference.cache
+E:\NoorRepositry\EmailServer\obj\Debug\EmailServer.csproj.CoreCompileInputs.cache
+E:\NoorRepositry\EmailServer\obj\Debug\EmailServer.dll
+E:\NoorRepositry\EmailServer\obj\Debug\EmailServer.pdb

@@ -1,0 +1,127 @@
+﻿@model ReadyToWin.API.ViewModel.GameResultFilter
+
+@{
+    ViewBag.Title = "AmountOnGameByGameType";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+<link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<style type="text/css">
+    .border-top-primary {
+        border: 1px solid #c2c3c5 !important;
+        border-bottom: 0.25rem solid #4e73df !important;
+        border-radius: 8px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0.5rem 1rem;
+        height: 4.375rem;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <div class="row border-top-primary">
+        <div class="col">
+            @Html.DropDownListFor(model => model.gametypeId, new SelectList(Model.GameNames.AsEnumerable(), "GameTypeId", "GameName"), new { @class = "form-control" })
+        </div>
+        <div class="col">
+            <div class="input-group">
+                @*<input type="text" class="form-control" placeholder="Split Amount" aria-label="Split Amount">*@
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> <b>Total Games</b></h1>
+        <a href="/Winning/Create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Total Games
+        </a>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">RECENT Beting Details</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="exampletbl" class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                UserId
+                            </th>
+                            <th>
+                               UserName
+                            </th>
+                            <th>
+                                GameTypeName
+                            </th>
+                            <th>
+                               CategoryName
+                            </th>
+                            <th>
+                                GameSubCategoryName
+                            </th>
+                            <th>
+                               BetNumber
+                            </th>
+                            <th>
+                                BetAmount
+                            </th>
+                            <th>
+                                createdDate
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AmountOnGameByGameType)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GameTypeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GameSubCategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BetNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BetAmount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#exampletbl').DataTable();
+        });
+    </script>
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjAqyNseBzkWvzvRnbbFsUQAAAAACAAAAAAAQZgAAAAEAACAAAACcNX9VP9D3SQiICjyYQ1KiHaJ6XJ7z6+9oomI0y1dYhQAAAAAOgAAAAAIAACAAAACdkHH2u18zMvz/gZtPligUtHRAHUPRbytIx3aRhx9L9SAAAAB2zpNGsSdVpbCXyrLeqBLE+ZO/YkCGZO2BoMRUIdakj0AAAAD3pcMfmdsBWazdRdtiLUXbUGta3PMPCgsqTlNR3R/cwiQ06s3VswwCNlfWzNQvj7vP/aDXa2ywxqTsw/G1PX/g</EncryptedPassword>
+    <History>False|2022-10-05T17:47:53.0261669Z;False|2022-09-18T23:47:10.5635715+05:30;</History>
+    <_PublishTargetUrl>ftp://198.37.116.29/www.Ready2Enjoy.somee.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>09/18/2022 23:59:46</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>09/18/2022 23:59:44</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>09/18/2022 23:59:43</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>09/18/2022 23:59:43</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>09/18/2022 23:59:43</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>09/18/2022 23:59:43</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>09/18/2022 23:04:07</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 14:13:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>02/22/2013 14:13:40</publishTime>
+    </File>
+    <File Include="bin/CommonServiceLocator.dll">
+      <publishTime>11/15/2017 00:52:14</publishTime>
+    </File>
+    <File Include="bin/CommonServiceLocator.pdb">
+      <publishTime>11/15/2017 00:52:14</publishTime>
+    </File>
+    <File Include="bin/EmailServer.dll">
+      <publishTime>09/18/2022 23:47:03</publishTime>
+    </File>
+    <File Include="bin/EmailServer.pdb">
+      <publishTime>09/18/2022 23:47:03</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>09/18/2022 23:04:12</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/18/2022 23:04:12</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/19/2022 00:10:53</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
