@@ -60,7 +60,7 @@ namespace ReadyToWin.API.Controllers
 
                     if (roles.Contains("Admin"))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Users", "Dashboard");
                     }
                     else if (roles.Contains("User"))
                     {
@@ -68,7 +68,7 @@ namespace ReadyToWin.API.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Users", "Dashboard");
                     }
                 }
 

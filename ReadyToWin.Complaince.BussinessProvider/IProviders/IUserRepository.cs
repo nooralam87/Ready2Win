@@ -27,6 +27,7 @@ namespace ReadyToWin.Complaince.Bussiness.Provider.UserRepositry
 
         DbOutput Edit(UserEdit user);
         List<User> GetUserById(int Id);
+        User GetUser_ById(int Id);
         List<User> GetAllUser();
         DbOutput Delete(DeleteRoleModel model);
 

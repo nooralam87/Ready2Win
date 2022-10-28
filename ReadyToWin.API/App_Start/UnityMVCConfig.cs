@@ -5,7 +5,6 @@ using ReadyToWin.Complaince.Bussiness.Provider.UserRepositry;
 using ReadyToWin.Complaince.DataAccess.Repository;
 using ReadyToWin.Complaince.DataAccess.UserRepositry;
 using ReadyToWin.Complaince.BussinessProvider.IProviders;
-using EmailServer;
 
 namespace ReadyToWin.API.App_Start
 {
@@ -25,7 +24,7 @@ namespace ReadyToWin.API.App_Start
             container.RegisterType<IAdminRepository, AdminRepository>();
             container.RegisterType<ICreateQutation, CreateQutation>();
             container.RegisterType<IVendorService, VendorService>();
-            container.RegisterType<ISmtpClient, SMTPClient>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

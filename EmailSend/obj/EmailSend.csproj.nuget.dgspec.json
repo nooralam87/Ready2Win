@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\NoorRepositry\\EmailSend\\EmailSend.csproj": {}
+    "E:\\NoorRepositryNewClone\\Ready2Win\\EmailSend\\EmailSend.csproj": {}
   },
   "projects": {
-    "E:\\NoorRepositry\\EmailSend\\EmailSend.csproj": {
+    "E:\\NoorRepositryNewClone\\Ready2Win\\EmailSend\\EmailSend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NoorRepositry\\EmailSend\\EmailSend.csproj",
+        "projectUniqueName": "E:\\NoorRepositryNewClone\\Ready2Win\\EmailSend\\EmailSend.csproj",
         "projectName": "EmailSend",
-        "projectPath": "E:\\NoorRepositry\\EmailSend\\EmailSend.csproj",
+        "projectPath": "E:\\NoorRepositryNewClone\\Ready2Win\\EmailSend\\EmailSend.csproj",
         "packagesPath": "C:\\Users\\Abdul\\.nuget\\packages\\",
-        "outputPath": "E:\\NoorRepositry\\EmailSend\\obj\\",
+        "outputPath": "E:\\NoorRepositryNewClone\\Ready2Win\\EmailSend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\NoorRepositry\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj": {
-                "projectPath": "E:\\NoorRepositry\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj"
+              "E:\\NoorRepositryNewClone\\Ready2Win\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj": {
+                "projectPath": "E:\\NoorRepositryNewClone\\Ready2Win\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj"
               }
             }
           }
@@ -68,11 +68,11 @@
         }
       }
     },
-    "E:\\NoorRepositry\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj": {
+    "E:\\NoorRepositryNewClone\\Ready2Win\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj": {
       "restore": {
-        "projectUniqueName": "E:\\NoorRepositry\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj",
+        "projectUniqueName": "E:\\NoorRepositryNewClone\\Ready2Win\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj",
         "projectName": "ReadyToWin.Complaince.Entities",
-        "projectPath": "E:\\NoorRepositry\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj",
+        "projectPath": "E:\\NoorRepositryNewClone\\Ready2Win\\ReadyToWin.Complaince.Entities\\ReadyToWin.Complaince.Entities.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}

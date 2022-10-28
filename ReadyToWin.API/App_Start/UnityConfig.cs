@@ -7,8 +7,7 @@ using ReadyToWin.Complaince.BussinessProvider.IProviders;
 using System.Web.Http;
 using System.Web.Mvc;
 using Unity;
-using EmailServer;
-using Unity.WebApi;
+//using Unity.WebApi;
 
 namespace ReadyToWin.API
 {
@@ -29,11 +28,10 @@ namespace ReadyToWin.API
             container.RegisterType<IAdminRepository, AdminRepository>();
             container.RegisterType<ICreateQutation, CreateQutation>();
             container.RegisterType<IVendorService, VendorService>();
-            container.RegisterType<ISmtpClient, SMTPClient>();
+            //DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
+            //GlobalConfiguration.Configuration.DependencyResolver = new UnityResolver(container);
+           config.DependencyResolver = new UnityResolver(container);
 
-            //GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
-            config.DependencyResolver = new UnityResolver(container);
-            
         }
     }
 }

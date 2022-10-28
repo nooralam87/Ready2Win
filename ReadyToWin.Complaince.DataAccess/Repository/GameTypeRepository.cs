@@ -66,15 +66,44 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             GameType gameType = new GameType();
             gameType.GameTypeId = GetLongIntegerFromDataReader(reader, "GameTypeId");
             gameType.GameName = GetStringFromDataReader(reader, "GameName");
-            gameType.StartDate = GetDateFromDataReader(reader, "StartDate");
-            gameType.EndDate = GetDateFromDataReader(reader, "EndDate");
+            gameType.StartDate = GetDateTimeSpanFromDataReader(reader, "StartDate");
+            gameType.EndDate = GetDateTimeSpanFromDataReader(reader, "EndDate");
             gameType.IsActive = GetBooleanFromDataReader(reader, "isActive");
             gameType.Duration = GetIntegerFromDataReader(reader, "Duration");
             gameType.CreatedBy = GetStringFromDataReader(reader, "CreatedBy");
             gameType.UpdatedBy = GetStringFromDataReader(reader, "UpdatedBy");
             gameType.UpdatedDate = GetDateFromDataReader(reader, "UpdatedDate");
             gameType.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
-            
+            System.DateTime _current_date = GetDateTimeSpanFromDataReader(reader, "CurrentTime");
+            System.DateTime _current_Time = new System.DateTime(gameType.StartDate.Year, gameType.StartDate.Month, gameType.StartDate.Day, _current_date.Hour, _current_date.Minute, _current_date.Second);
+            System.DateTime _start_date = new System.DateTime(gameType.StartDate.Year, gameType.StartDate.Month, gameType.StartDate.Day, gameType.StartDate.Hour, gameType.StartDate.Minute, gameType.StartDate.Second);
+            System.DateTime _end_date = new System.DateTime(gameType.EndDate.Year, gameType.EndDate.Month, gameType.EndDate.Day, gameType.EndDate.Hour, gameType.EndDate.Minute, gameType.EndDate.Second);
+            #region 
+            if (gameType.GameName.ToUpper()== "DESAWAR" || gameType.GameName.ToUpper() == "READY2ENJOY")
+            {
+                //_end_date = new System.DateTime(gameType.EndDate.Year, gameType.EndDate.Month, gameType.EndDate.Day+1, gameType.EndDate.Hour, gameType.EndDate.Minute, gameType.EndDate.Second);
+                if (_current_Time < _start_date && _current_Time >= _end_date)
+                {
+                    gameType.Status = 0;
+                }
+                else
+                {
+                    gameType.Status = 1;
+                }
+            }
+            else
+            {
+                if(_current_Time >= _start_date && _current_Time < _end_date)
+                {
+                    gameType.Status = 1;
+                }
+                else
+                {
+                    gameType.Status = 0;
+                }
+            }
+            #endregion
+
             return gameType;
         }
         private GameCategory GenerateGameCategoryDataReader(IDataReader reader)

@@ -4,3 +4,9 @@ C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Release\EmailServer.cspro
 C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Release\EmailServer.csproj.CoreCompileInputs.cache
 C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Release\EmailServer.dll
 C:\Users\Abdul\Documents\NoorRepositry\EmailServer\obj\Release\EmailServer.pdb
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\bin\Release\EmailServer.dll
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\bin\Release\EmailServer.pdb
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\obj\Release\EmailServer.csproj.AssemblyReference.cache
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\obj\Release\EmailServer.csproj.CoreCompileInputs.cache
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\obj\Release\EmailServer.dll
+E:\NoorRepositryNewClone\Ready2Win\EmailServer\obj\Release\EmailServer.pdb

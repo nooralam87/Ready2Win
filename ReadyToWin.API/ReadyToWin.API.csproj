@@ -198,7 +198,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Handler\" />
     <Folder Include="Metadata\" />
     <Folder Include="UploadedFiles\" />
@@ -228,15 +227,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BigCommerceIntigrationController.cs" />
-    <Compile Include="Controllers\CreateQutationController.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GameTypeController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\UploadapiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserTransactionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\WinningController.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Filters\ReadyAuthorizeAttribute.cs" />
@@ -2145,6 +2143,7 @@
     <Content Include="Content\scss\_navs.scss" />
     <Content Include="Content\scss\_utilities.scss" />
     <Content Include="Content\scss\_variables.scss" />
+    <Content Include="App_Data\app-debug.apk" />
     <None Include="Properties\PublishProfiles\FinalPublish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\demo\chart-area-demo.js" />
@@ -2161,6 +2160,7 @@
     <Content Include="Scripts\sb-admin-2.min.js" />
     <Content Include="Scripts\setqutation.js" />
     <Content Include="Scripts\Userrepos.js" />
+    <Content Include="Views\Dashboard\indexBackupCode.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2175,31 +2175,28 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\BigCommerceIntigration\Index.cshtml" />
     <Content Include="Views\BigCommerceIntigration\ProductCheckout.cshtml" />
     <Content Include="Views\Shared\_Dashboard.cshtml" />
-    <Content Include="Views\Home\AmountDeposit.cshtml" />
-    <Content Include="Views\Home\WithdrawRequest.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
-    <Content Include="Views\Home\Preview.cshtml" />
     <Content Include="Views\Winning\Create.cshtml" />
     <Content Include="Views\Winning\Details.cshtml" />
     <Content Include="Views\Winning\Index.cshtml" />
-    <Content Include="Views\Home\GetAllAmountOnGameByGameType.cshtml" />
-    <Content Include="Views\Home\Charts.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Shared\_LayoutDashBoard.cshtml" />
+    <Content Include="Views\Dashboard\AmountDeposit.cshtml" />
+    <Content Include="Views\Dashboard\Charts.cshtml" />
+    <Content Include="Views\Dashboard\GetAllAmountOnGameByGameType.cshtml" />
+    <Content Include="Views\Dashboard\Preview.cshtml" />
+    <Content Include="Views\Dashboard\Users.cshtml" />
+    <Content Include="Views\Dashboard\WithdrawRequest.cshtml" />
+    <Content Include="Views\Download\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EmailServer\EmailServer.csproj">
-      <Project>{7215fb79-d393-4170-8bae-a66f580edb8a}</Project>
-      <Name>EmailServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ReadyToWin.Complaince.BussinessProvider\ReadyToWin.Complaince.BussinessProvider.csproj">
       <Project>{e66a16fd-b877-41ab-8f68-83a9d47d96d9}</Project>
       <Name>ReadyToWin.Complaince.BussinessProvider</Name>

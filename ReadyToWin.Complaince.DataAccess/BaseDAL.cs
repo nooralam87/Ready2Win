@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Transactions;
 using ReadyToWin.Complaince.Entities.MasterModel;
+using System.Globalization;
 
 namespace ReadyToWin.Complaince.DataAccess
 {
@@ -32,6 +33,10 @@ namespace ReadyToWin.Complaince.DataAccess
             //    return reader.GetDateTime(reader.GetOrdinal(key));
             //}
             return reader[key] == DBNull.Value ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal(key));
+        }
+        protected DateTime GetDateTimeSpanFromDataReader(IDataReader reader, String key)
+        {
+            return reader[key] == DBNull.Value ? DateTime.MinValue : DateTime.ParseExact(reader.GetString(reader.GetOrdinal(key)), "dd/M/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
         }
         protected Int16 GetShortIntegerFromDataReader(IDataReader reader, String key)
         {

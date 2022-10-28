@@ -165,7 +165,14 @@ namespace ReadyToWin.Complaince.DataAccess.UserRepositry
 
             return token;
         }
-
+        private User GeneratePasswordFromDataReader(IDataReader reader)
+        {
+            User user = new User();
+            user.Id = GetLongIntegerFromDataReader(reader, "Id");
+            user.UserId = GetStringFromDataReader(reader, "User_Id");
+            user.Password = EncryptionLibrary.DecryptText(GetStringFromDataReader(reader, "password"));
+            return user;
+        }
         private User GenerateFromDataReader(IDataReader reader)
         {
             User user = new User();
@@ -311,6 +318,20 @@ namespace ReadyToWin.Complaince.DataAccess.UserRepositry
             }
             return userList;
         }
+        public User GetUser_ById(int Id)
+        {
+            var userList = new User();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.GET_USER_BY_ID);
+            _dbContextDQCPRDDB.AddInParameter(dbCommand, "Id", DbType.String, Id);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userList = GeneratePasswordFromDataReader(reader);
+                }
+            }
+            return userList;
+        }
         public List<User> GetAllUser()
         {
             var userList = new List<User>();
@@ -334,7 +355,7 @@ namespace ReadyToWin.Complaince.DataAccess.UserRepositry
 
             return count;
         }
-
+        
         public DbOutput Logout(string userId)
         {
             using (DbCommand command = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.LOGGOFF))

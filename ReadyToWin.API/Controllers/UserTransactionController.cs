@@ -141,7 +141,28 @@ namespace ReadyToWin.API.Controllers
        public async Task<HttpResponseMessage> UserGameSelectionSubmit(UserGameSelection userGameSelection)
        {
            int count  = _iUserTransaction.UserGameSelectionSubmit(userGameSelection);
-           return await CreateResponse(count.ToString());
+            string message = string.Empty;
+            switch (count)
+            {
+                case 1:
+                    message = "Success";break;
+                case 0:
+                    message = "Game Time End"; break;
+                case 3:
+                    message = "Amount Limit is Exceeded Due to Duration Time Based on EndTime"; break;
+                case 2:
+                    message = "Amount Limit is Exceeded Due Bid Amount is Graeter Then Wallet Amount"; break;
+                default:
+                    count = 0;
+                    message = "Error";
+                    break;
+            }
+            DbOutput dbOutput = new DbOutput()
+            {
+                Code = count,
+                Message = message
+            };
+            return await CreateResponse(dbOutput);
        }
 
         
