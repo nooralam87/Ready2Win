@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Downloads";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<h2>Downloads</h2>
+<table>
+    <tr>
+        <th>File Name</th>
+        <th>Link</th>
+    </tr>
+   <tr>
+            <td>ReadytoEnjoy </td>
+            <td>@Html.ActionLink("Download", "apk", new { filename = "app-debug.apk" }) </td>
+        </tr>
+</table>
