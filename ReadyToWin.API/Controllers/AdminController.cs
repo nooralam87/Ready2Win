@@ -159,6 +159,26 @@ namespace ReadyToWin.API.Controllers
             return await CreateResponse(output);
         }
 
+        [HttpGet]
+        [Route("GetULBGWBetNoWinAmount")]
+        [ResponseType(typeof(Response<UserWinDetails>))]
+        public async Task<HttpResponseMessage> GetUserListBasedOnGameWithBetNumberAndWinAmount()
+        {
+            //UserWinDetails userAmountwithdraw = new UserWinDetails() { UserId = UserId, GameTypeId = GameTypeId, CategoryName = CategoryName };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iAdminRepository.GetUserListBasedOnGameWithBetNumberAndWinAmount());
+        }
+
+        [HttpGet]
+        [Route("GetUserListWalletBalance")]
+        [ResponseType(typeof(Response<UserWalletBalance>))]
+        public async Task<HttpResponseMessage> GetUserListWalletBalance()
+        {
+            //UserWinDetails userAmountwithdraw = new UserWinDetails() { UserId = UserId, GameTypeId = GameTypeId, CategoryName = CategoryName };
+            //decimal count = _iUserTransaction.GetUserGameListbyUserId(UserId);
+            return await CreateResponse(_iAdminRepository.GetUserListWalletBalance());
+        }
+
         ///// <summary>
         ///// Update UserWithdraw Request.
         ///// </summary>

@@ -6,7 +6,7 @@ using ReadyToWin.Complaince.Framework;
 using System.Collections.Generic;
 using System.Data;
 using ReadyToWin.Complaince.Entities.GameType;
-
+using ReadyToWin.Complaince.Entities.UserTransaction;
 
 namespace ReadyToWin.Complaince.BussinessProvider.IProviders
 {
@@ -19,9 +19,10 @@ namespace ReadyToWin.Complaince.BussinessProvider.IProviders
         DbOutput UpdateWinningUser(Admin updateWiinerUserDetails);
         //DbOutput DeleteWinningUser(Admin deleteWinnerUser);
         DbOutput UserDepositAmountApproved(Admin approvedAmount);
-
         DbOutput UserWithdrawAmountApproved(Admin approvedAmount);
         DbOutput DeclaredWinningNumber(Admin adminModel);
         List<AmountOnGameByGameType> ListOfAmountOnGameByGameType(long GameTypeId);
+        List<UserWinDetails> GetUserListBasedOnGameWithBetNumberAndWinAmount();
+        List<UserWalletBalance> GetUserListWalletBalance();
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using ReadyToWin.Complaince.Entities.UserTransaction;
 
 namespace ReadyToWin.Complaince.DataAccess.Repository
 {
@@ -268,6 +269,60 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             userList.createdDate = GetDateFromDataReader(reader, "CreatedDate");
             
             return userList;
+        }
+        public List<UserWinDetails> GetUserListBasedOnGameWithBetNumberAndWinAmount()
+        {
+            List<UserWinDetails> userWinDetails = new List<UserWinDetails>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_LIST_BY_GAME_BETNUMBER_WINAMOUNT);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userWinDetails.Add(GenerateFromDataReaderGameWithBetNumberAndWinAmount(reader));
+                }
+            }
+            return userWinDetails;
+
+        }
+        private UserWinDetails GenerateFromDataReaderGameWithBetNumberAndWinAmount(IDataReader reader)
+        {
+            UserWinDetails userWinDetails = new UserWinDetails();
+            userWinDetails.UserName = GetStringFromDataReader(reader, "UserName");
+            userWinDetails.GameTypeName = GetStringFromDataReader(reader, "GameTypeName");
+            userWinDetails.CategoryName = GetStringFromDataReader(reader, "CategoryName");
+            userWinDetails.GameSubCategoryName = GetStringFromDataReader(reader, "GameSubCategoryName");
+            userWinDetails.BettingNumber = GetIntegerFromDataReader(reader, "BettingNumber");
+            userWinDetails.BettingAmount = GetDecimalFromDataReader(reader, "BettingAmount");
+            userWinDetails.WinAmount = GetDecimalFromDataReader(reader, "WinAmount");
+            userWinDetails.WinDate = GetDateFromDataReader(reader, "WinDate");
+            return userWinDetails;
+        }
+        public List<UserWalletBalance> GetUserListWalletBalance()
+        {
+            List<UserWalletBalance> userWalletBalance = new List<UserWalletBalance>();
+            DbCommand dbCommand = _dbContextDQCPRDDB.GetStoredProcCommand(DBConstraints.USER_LIST_WALLET_BALANCE);
+            using (IDataReader reader = _dbContextDQCPRDDB.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    userWalletBalance.Add(GenerateFromDataReaderWalletBalance(reader));
+                }
+            }
+            return userWalletBalance;
+
+        }
+        private UserWalletBalance GenerateFromDataReaderWalletBalance(IDataReader reader)
+        {
+            UserWalletBalance userWalletBalance = new UserWalletBalance();
+            userWalletBalance.Id = GetIntegerFromDataReader(reader, "id");
+            userWalletBalance.UserId = GetStringFromDataReader(reader, "UserId");
+            userWalletBalance.UserName = GetStringFromDataReader(reader, "UserName");
+            userWalletBalance.Mobile = GetStringFromDataReader(reader, "Mobile");
+            userWalletBalance.Email = GetStringFromDataReader(reader, "Email");
+            userWalletBalance.City = GetStringFromDataReader(reader, "City");
+            userWalletBalance.WalletBalance = GetDecimalFromDataReader(reader, "WalletBalance");
+            userWalletBalance.CreatedDate = GetDateFromDataReader(reader, "CreatedDate");
+            return userWalletBalance;
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿
-@model IEnumerable<ReadyToWin.Complaince.Entities.UserTransaction.UserAmountWithdraw>
-
+﻿@model IEnumerable<ReadyToWin.Complaince.Entities.UserTransaction.UserAmountWithdraw>
 @{
     ViewBag.Title = "Withdraw Request";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
-
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 <div class="container-fluid">
 
@@ -35,12 +32,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.ApprovedAmount)
-                    </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PaymentModeId)
-                    </th>*@
+                        @Html.DisplayNameFor(model => model.PaymentMode)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Remarks)
                     </th>
@@ -64,13 +58,10 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
-                        @*<td>
-            @Html.DisplayFor(modelItem => item.ApprovedAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentModeId)
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentMode)
 
-        </td>*@
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Remarks)
                         </td>

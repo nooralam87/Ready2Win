@@ -31,8 +31,7 @@ namespace ReadyToWin.API.Controllers
         // GET: Winning
         public ActionResult Index()
         {
-            List<Admin> userWinningList=_iAdminRepository.ListOfWinningUsers();
-            return View(userWinningList);
+            return View(_iAdminRepository.GetUserListBasedOnGameWithBetNumberAndWinAmount());
         }
 
         // GET: Winning/Details/5

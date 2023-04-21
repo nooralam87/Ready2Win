@@ -18,7 +18,7 @@ function GetAllData() {
           var row = "<tr><td>" + (index + 1) + "</td><td>" + item.UserId + "</td><td>";
           row += "<span class='btn btn-light btn-icon-split btn-sm'><span class='icon text-gray-600'>" + item.UserName + "</span>";
           row += "<strong class='text'><button id='" + item.Id + "_btn' type='button' class='btn btn-success btn-sm'><i class='fas fa-eye'></i></button></strong></span></td><td>" + item.Email + "</td><td>" + item.Mobile + "</td>";
-          row += "<td>" + (item.Roles == '2' ? 'Player' : 'Admin') + "</td><td>" + item.City + "</td></tr>";
+          row += "<td>" + item.City + "</td><td>" + item.WalletBalance + "</td></tr>";
           tbl.append(row);
           $('#'+item.Id+'_btn').click(function () {
               //alert(item.UserId);

@@ -175,7 +175,8 @@ namespace ReadyToWin.API.Controllers
         public JsonResult GetUsers()
         {
             // do here some operation  
-            var output = _iUserProvider.GetAllUser();
+            //var output = _iUserProvider.GetAllUser();
+            var output = _iAdminRepository.GetUserListWalletBalance();
             return Json(output, JsonRequestBehavior.AllowGet);
         }
 

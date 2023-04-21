@@ -93,7 +93,7 @@ namespace ReadyToWin.Complaince.DataAccess.Repository
             userAmount.MobileNoForPayment = GetStringFromDataReader(reader, "MobileNoForPayment");
             userAmount.RequestedAmount = GetDecimalFromDataReader(reader, "RequestedAmount");
             //userAmount.PaymentScreenshot = GetByteFromDataReader(reader, "PaymentScreenShot");
-            userAmount.PaymentModeId = GetIntegerFromDataReader(reader, "PaymentModeId");
+            userAmount.PaymentMode = GetStringFromDataReader(reader, "PaymentModeId");
             //user.DepartmentId = GetIntegerFromDataReader(reader, "Department_Id");
             userAmount.Status = GetStringFromDataReader(reader, "Status");
             userAmount.ApprovedAmount = GetDecimalFromDataReader(reader, "ApprovedAmount");

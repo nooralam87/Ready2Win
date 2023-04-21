@@ -124,6 +124,7 @@
     <Compile Include="UserModel\UserEdit.cs" />
     <Compile Include="UserTransaction\UserAmountDeposit.cs" />
     <Compile Include="UserTransaction\UserAmountWithdraw.cs" />
+    <Compile Include="UserTransaction\UserWalletBalance.cs" />
     <Compile Include="UserTransaction\UserWinDetails.cs" />
     <Compile Include="UserTransaction\WinNumberDeclare.cs" />
     <Compile Include="UserTransaction\UserBettingDetails.cs" />

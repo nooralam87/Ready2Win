@@ -59,7 +59,8 @@ namespace ReadyToWin.Complaince.DataAccess
         public const string WIN_NUMBER_DECLARED = "usp_user_win_declare";
         public const string WIN_NUMBER_DECLARED_HISTORY = "usp_win_declare_history";
         public const string AMOUNT_ON_GAME_BY_GAMETYPEID= "usp_amount_number_gametype";
-
+        public const string USER_LIST_BY_GAME_BETNUMBER_WINAMOUNT = "usp_user_list_by_gameandwinamount";
+        public const string USER_LIST_WALLET_BALANCE = "usp_user_list_walletamount";
 
         public const string GET_USER_TOTAL_AMOUNT = "usp_user_Total_Amount";
 

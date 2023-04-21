@@ -21,6 +21,8 @@ namespace ReadyToWin.Complaince.Entities.UserTransaction
         public string UserName { get; set; }
         public string Status { get; set; }
         public decimal ApprovedAmount { get; set; }
+        [Display(Name = "Payment Mode")]
+        public string PaymentMode { get; set; }
         public long PaymentModeId { get; set; }
         public long GameTypeId { get; set; }
         public long GameSubTypeId { get; set; }

@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Abdul\Documents\NoorPublish</_PublishTargetUrl>
-    <History>True|2022-10-23T11:37:02.0189617Z;True|2022-10-23T16:34:05.8143005+05:30;True|2022-10-23T14:33:25.6712862+05:30;True|2022-10-16T05:47:09.5478685+05:30;True|2022-10-15T05:06:23.3139239+05:30;True|2022-10-15T05:02:32.2681554+05:30;True|2022-10-15T04:17:22.0462207+05:30;True|2022-10-15T04:00:10.4794619+05:30;True|2022-10-15T03:56:26.8686265+05:30;True|2022-10-15T02:50:56.1089830+05:30;True|2022-10-15T02:41:37.8691065+05:30;True|2022-10-15T02:36:27.4692134+05:30;True|2022-10-13T21:13:23.3373906+05:30;True|2022-10-12T19:28:21.2334012+05:30;True|2022-10-12T03:37:07.2426274+05:30;True|2022-10-05T23:56:29.7320664+05:30;False|2022-10-05T23:46:27.4093330+05:30;False|2022-10-05T23:34:09.8442189+05:30;True|2022-10-05T11:51:24.7999280+05:30;True|2022-10-05T11:41:29.1748031+05:30;True|2022-09-19T00:20:15.5945059+05:30;</History>
+    <History>True|2023-02-27T09:06:01.3958936Z;True|2022-10-23T17:07:02.0189617+05:30;True|2022-10-23T16:34:05.8143005+05:30;True|2022-10-23T14:33:25.6712862+05:30;True|2022-10-16T05:47:09.5478685+05:30;True|2022-10-15T05:06:23.3139239+05:30;True|2022-10-15T05:02:32.2681554+05:30;True|2022-10-15T04:17:22.0462207+05:30;True|2022-10-15T04:00:10.4794619+05:30;True|2022-10-15T03:56:26.8686265+05:30;True|2022-10-15T02:50:56.1089830+05:30;True|2022-10-15T02:41:37.8691065+05:30;True|2022-10-15T02:36:27.4692134+05:30;True|2022-10-13T21:13:23.3373906+05:30;True|2022-10-12T19:28:21.2334012+05:30;True|2022-10-12T03:37:07.2426274+05:30;True|2022-10-05T23:56:29.7320664+05:30;False|2022-10-05T23:46:27.4093330+05:30;False|2022-10-05T23:34:09.8442189+05:30;True|2022-10-05T11:51:24.7999280+05:30;True|2022-10-05T11:41:29.1748031+05:30;True|2022-09-19T00:20:15.5945059+05:30;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/app-debug.apk">
@@ -69,7 +69,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/05/2022 23:16:06</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
-      <publishTime>07/08/2022 16:58:18</publishTime>
+      <publishTime>08/07/2022 16:58:18</publishTime>
     </File>
     <File Include="bin/EPPlus.Interfaces.dll">
       <publishTime>10/19/2022 07:05:18</publishTime>
@@ -162,46 +162,46 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/19/2022 07:05:18</publishTime>
     </File>
     <File Include="bin/ReadyToWin.API.dll">
-      <publishTime>10/23/2022 17:07:37</publishTime>
+      <publishTime>02/27/2023 14:35:38</publishTime>
     </File>
     <File Include="bin/ReadyToWin.API.pdb">
-      <publishTime>10/23/2022 17:07:37</publishTime>
+      <publishTime>02/27/2023 14:35:38</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.BussinessProvider.dll">
-      <publishTime>10/23/2022 14:32:39</publishTime>
+      <publishTime>02/27/2023 14:35:28</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.BussinessProvider.dll.config">
-      <publishTime>09/24/2022 11:25:31</publishTime>
+      <publishTime>10/19/2022 07:05:31</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.BussinessProvider.pdb">
-      <publishTime>10/23/2022 14:32:39</publishTime>
+      <publishTime>02/27/2023 14:35:28</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.DataAccess.dll">
-      <publishTime>10/23/2022 14:32:40</publishTime>
+      <publishTime>02/27/2023 14:35:30</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.DataAccess.dll.config">
       <publishTime>10/19/2022 07:05:32</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.DataAccess.pdb">
-      <publishTime>10/23/2022 14:32:40</publishTime>
+      <publishTime>02/27/2023 14:35:30</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Entities.dll">
-      <publishTime>10/19/2022 07:14:05</publishTime>
+      <publishTime>02/27/2023 14:35:23</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Entities.dll.config">
       <publishTime>10/19/2022 07:05:32</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Entities.pdb">
-      <publishTime>10/19/2022 07:14:05</publishTime>
+      <publishTime>02/27/2023 14:35:23</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Framework.dll">
-      <publishTime>10/19/2022 07:14:06</publishTime>
+      <publishTime>02/27/2023 14:35:26</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Framework.dll.config">
       <publishTime>10/19/2022 07:05:32</publishTime>
     </File>
     <File Include="bin/ReadyToWin.Complaince.Framework.pdb">
-      <publishTime>10/19/2022 07:14:06</publishTime>
+      <publishTime>02/27/2023 14:35:26</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>07/19/2017 15:31:28</publishTime>
@@ -5979,7 +5979,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/19/2022 07:05:18</publishTime>
     </File>
     <File Include="Scripts/Userrepos.js">
-      <publishTime>10/23/2022 15:07:07</publishTime>
+      <publishTime>10/31/2022 21:16:50</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>10/19/2022 07:05:18</publishTime>
@@ -5994,7 +5994,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/19/2022 07:05:18</publishTime>
     </File>
     <File Include="Views/Dashboard/AmountDeposit.cshtml">
-      <publishTime>10/19/2022 07:05:18</publishTime>
+      <publishTime>10/24/2022 06:50:51</publishTime>
     </File>
     <File Include="Views/Dashboard/Charts.cshtml">
       <publishTime>10/19/2022 07:05:18</publishTime>
@@ -6009,10 +6009,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/19/2022 07:05:18</publishTime>
     </File>
     <File Include="Views/Dashboard/Users.cshtml">
-      <publishTime>10/23/2022 14:28:31</publishTime>
+      <publishTime>10/31/2022 21:17:05</publishTime>
     </File>
     <File Include="Views/Dashboard/WithdrawRequest.cshtml">
-      <publishTime>10/19/2022 07:05:18</publishTime>
+      <publishTime>10/31/2022 21:36:38</publishTime>
     </File>
     <File Include="Views/Download/Index.cshtml">
       <publishTime>10/23/2022 17:05:36</publishTime>
@@ -6066,7 +6066,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/19/2022 07:05:18</publishTime>
     </File>
     <File Include="Views/Winning/Index.cshtml">
-      <publishTime>10/19/2022 07:05:18</publishTime>
+      <publishTime>10/31/2022 21:04:04</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>10/19/2022 07:05:18</publishTime>

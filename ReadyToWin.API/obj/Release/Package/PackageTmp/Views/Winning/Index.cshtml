@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ReadyToWin.Complaince.Entities.AdminModel.Admin>
+﻿@model IEnumerable<ReadyToWin.Complaince.Entities.UserTransaction.UserWinDetails>
 
 @{
     ViewBag.Title = "Index";
@@ -27,25 +27,25 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.GameTypeId)
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BettingNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BettingAmount)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.GameTypeName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NumberType)
+                                @Html.DisplayNameFor(model => model.CategoryName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.WinningAmount)
+                                @Html.DisplayNameFor(model => model.GameSubCategoryName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Remarks)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Status)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.winningNumber)
+                                @Html.DisplayNameFor(model => model.WinAmount)
                             </th>
                             @*<th></th>*@
                         </tr>
@@ -55,25 +55,25 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.GameTypeId)
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BettingNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BettingAmount)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.GameTypeName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NumberType)
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.WinningAmount)
+                                    @Html.DisplayFor(modelItem => item.GameSubCategoryName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Remarks)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.winningNumber)
+                                    @Html.DisplayFor(modelItem => item.WinAmount)
                                 </td>
                                 @*<td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
