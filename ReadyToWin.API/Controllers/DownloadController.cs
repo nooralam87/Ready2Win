@@ -11,7 +11,6 @@ namespace ReadyToWin.API.Controllers
     public class DownloadController : Controller
     {
         // GET: Download
-
         [AllowAnonymous]
         [HttpGet]
         [Route("Index")]
