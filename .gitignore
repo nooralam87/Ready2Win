@@ -348,3 +348,17 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/ReadyToWin.API/.vs/ReadyToWin.API/config/applicationhost.config
+/ReadyToWin.API/ReadyToWin.API.sln
+/ReadyToWin.Complaince.BussinessProvider/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ReadyToWin.Complaince.DataAccess/obj/Debug/ReadyToWin.Complaince.DataAccess.csproj.AssemblyReference.cache
+/ReadyToWin.Complaince.DataAccess/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ReadyToWin.API/obj/Debug/ReadyToWin.API.csproj.AssemblyReference.cache
+/ReadyToWin.Complaince.BussinessProvider/obj/Debug/ReadyToWin.Complaince.BussinessProvider.csproj.AssemblyReference.cache
+/ReadyToWin.API/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ReadyToWin.Complaince.Entities/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ReadyToWin.Complaince.Entities/obj/Debug/ReadyToWin.Complaince.Entities.csproj.AssemblyReference.cache
+/ReadyToWin.API/.vs/ReadyToWin.API/v17/.suo
+/ReadyToWin.API/.vs/ReadyToWin.API/v17/fileList.bin
+/ReadyToWin.Complaince.Framework/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ReadyToWin.Complaince.Framework/obj/Debug/ReadyToWin.Complaince.Framework.csproj.AssemblyReference.cache
